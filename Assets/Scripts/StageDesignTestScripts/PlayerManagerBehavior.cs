@@ -20,12 +20,14 @@ namespace StageDesignTestScripts
                 pairWithDevice: Keyboard.current
             );
             playerLeft.transform.position = playerLeftSpawn.position;
+            playerLeft.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             PlayerInput playerRight = PlayerInput.Instantiate(
                 playerPrefab,
                 controlScheme: "KeyboardRight",
                 pairWithDevice: Keyboard.current
             );
             playerRight.transform.position = playerRightSpawn.position;
+            playerRight.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         }
 
         // Update is called once per frame
