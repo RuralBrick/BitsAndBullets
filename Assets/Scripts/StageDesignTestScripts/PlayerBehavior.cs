@@ -8,6 +8,9 @@ namespace StageDesignTestScripts
     public class PlayerBehavior : MonoBehaviour
     {
         [SerializeField] float movementSpeed;
+        [SerializeField] float bulletSpeed;
+
+        [SerializeField] GameObject bulletPrefab;
 
         new Rigidbody2D rigidbody;
 
@@ -24,10 +27,28 @@ namespace StageDesignTestScripts
             move = value.Get<Vector2>();
         }
 
+        void OnFire()
+        {
+            if (move != Vector2.zero)
+            {
+                GameObject newBullet = Instantiate(
+                    bulletPrefab,
+                    transform.position + (Vector3)move.normalized,
+                    Quaternion.Euler(0, 0, Mathf.Atan2(-move.x, move.y) * Mathf.Rad2Deg)
+                );
+                newBullet.GetComponent<Rigidbody2D>().velocity = move.normalized * bulletSpeed;
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
             rigidbody.velocity = move * movementSpeed;
+        }
+
+        public void GetHit(BulletHitInfo hitInfo)
+        {
+            Debug.Log(hitInfo);
         }
     }
 }
