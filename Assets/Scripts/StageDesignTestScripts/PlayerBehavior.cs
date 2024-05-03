@@ -31,12 +31,11 @@ namespace StageDesignTestScripts
         {
             if (move != Vector2.zero)
             {
-                GameObject newBullet = Instantiate(
+                Instantiate(
                     bulletPrefab,
                     transform.position + (Vector3)move.normalized,
                     Quaternion.Euler(0, 0, Mathf.Atan2(-move.x, move.y) * Mathf.Rad2Deg)
                 );
-                newBullet.GetComponent<Rigidbody2D>().velocity = move.normalized * bulletSpeed;
             }
         }
 
