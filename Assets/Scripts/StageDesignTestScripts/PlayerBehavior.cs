@@ -10,6 +10,8 @@ namespace StageDesignTestScripts
         [SerializeField] float movementSpeed;
         [SerializeField] float bulletSpeed;
 
+        public string playerName;
+
         [SerializeField] GameObject bulletPrefab;
 
         new Rigidbody2D rigidbody;
@@ -47,7 +49,7 @@ namespace StageDesignTestScripts
 
         public void GetHit(BulletHitInfo hitInfo)
         {
-            Debug.Log(hitInfo);
+            Debug.Log($"I, {playerName}, have gotten hit!");
         }
     }
 }
