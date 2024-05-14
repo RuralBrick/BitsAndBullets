@@ -60,14 +60,16 @@ public class ScoreManager : MonoBehaviour
         if (playerBehavior.playerName == player1_name)
         {
             scores[player2_name] += 1;
+            GameOverManager.instance.PlayerWins(player2_name);
         }
         else
         {
             scores[player1_name] += 1;
+            GameOverManager.instance.PlayerWins(player1_name);
         }
 
         UpdateScoreboard();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     // Update is called once per frame
