@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenuFinal.unity
     guid: df2b369386071614a8bc59f30ef1e003
   - enabled: 1
-    path: Assets/Scenes/StageDesignDrafts/5.unity
-    guid: 78a703e7bf2f59a4cbf4a83a4ab51ca2
+    path: Assets/Scenes/FinalStages/FantasyCourtyard.unity
+    guid: 59b470c0fa015554b86081bd9dc6992e
   - enabled: 1
-    path: Assets/Scenes/StageDesignDrafts/6.unity
-    guid: 1699b77d8ee06f54f8c0e69311f536dc
+    path: Assets/Scenes/FinalStages/StreetFight.unity
+    guid: 6da4d19fddef71042b610dd7b3d9f742
   - enabled: 1
-    path: Assets/Scenes/StageDesignDrafts/7.unity
-    guid: 26a14eca6d2109942a54d3c767533620
+    path: Assets/Scenes/FinalStages/OpenLawn.unity
+    guid: 00eae02620bcb9c4c9f77d63568ff532
   m_configObjects: {}

@@ -11,6 +11,8 @@ public class GameOverManager : MonoBehaviour
     public TMP_Text gameOverText;
     public static GameOverManager instance;
 
+    [SerializeField] string[] stageNames;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -27,15 +29,6 @@ public class GameOverManager : MonoBehaviour
         gameOverPanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (gameOverPanel.activeSelf && Input.GetKeyDown(KeyCode.Space)) // Check for a key press
-        {
-            ResetGame();
-        }
-    }
-
     public void PlayerWins(string playerName)
     {
         gameOverText.text = "Game Over! \n" + playerName + " wins!";
@@ -43,12 +36,21 @@ public class GameOverManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    void ResetGame()
+    public void PlayerWins(PlayerMovement player)
     {
+        gameOverText.text = "Game Over! \n" + player.playerName + " wins!";
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ResetGame()
+    {
+        if (!gameOverPanel.activeSelf)
+        {
+            return;
+        }
         gameOverPanel.SetActive(false); // Hide the panel
         Time.timeScale = 1;
-        // HACK
-        SceneManager.LoadScene(Random.Range(5, 8).ToString()); // Reset the scene
-        // end HACK
+        SceneManager.LoadScene(stageNames[Random.Range(0, stageNames.Length)]); // Reset the scene
     }
 }
