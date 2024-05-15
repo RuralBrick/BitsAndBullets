@@ -14,20 +14,27 @@ public class PlayerManagerBehavior : MonoBehaviour
             controlScheme: "KeyboardLeft",
             pairWithDevice: Keyboard.current
         );
-        playerLeft.transform.position = playerLeftSpawn.position;
-        playerLeft.GetComponent<SpriteRenderer>().color = Color.red;
-        playerLeft.GetComponent<PlayerMovement>().playerName = "PlayerRed";
         PlayerInput playerRight = PlayerInput.Instantiate(
             playerPrefab,
             controlScheme: "KeyboardRight",
             pairWithDevice: Keyboard.current
         );
+
+        playerLeft.transform.position = playerLeftSpawn.position;
         playerRight.transform.position = playerRightSpawn.position;
+
+        PlayerMovement playerLeftScript = playerLeft.GetComponent<PlayerMovement>();
+        PlayerMovement playerRightScript = playerRight.GetComponent<PlayerMovement>();
+
+        playerLeftScript.playerName = "PlayerRed";
+        playerRightScript.playerName = "PlayerBlue";
+
+        playerLeft.GetComponent<SpriteRenderer>().color = Color.red;
         playerRight.GetComponent<SpriteRenderer>().color = Color.blue;
-        playerRight.GetComponent<PlayerMovement>().playerName = "PlayerBlue";
-        ScoreManager.instance.Initialize(
-            playerLeft.GetComponent<PlayerMovement>(),
-            playerRight.GetComponent<PlayerMovement>()
-        );
+
+        playerLeftScript.enemy = playerRightScript;
+        playerRightScript.enemy = playerLeftScript;
+
+        ScoreManager.instance.Initialize(playerLeftScript, playerRightScript);
     }
 }

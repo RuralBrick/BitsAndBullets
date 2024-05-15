@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public string playerName;
+    public PlayerMovement enemy;
 
     // Declare Variables and Constants
     [SerializeField] private float playerSpeed = 5; // Speed
@@ -75,8 +76,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void GetHit(BulletHitInfo hitInfo)
     {
-        Debug.Log("I've been hit!");
-        ScoreManager.instance.AddPoint(hitInfo.sourcePlayer);
-        GameOverManager.instance.PlayerWins(hitInfo.sourcePlayer);
+        Debug.Log($"I, {playerName}, have been hit!");
+        ScoreManager.instance.AddPoint(enemy);
+        GameOverManager.instance.PlayerWins(enemy);
     }
 }
