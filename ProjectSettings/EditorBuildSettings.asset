@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StageDesignDrafts/5.unity
     guid: 78a703e7bf2f59a4cbf4a83a4ab51ca2
+  - enabled: 1
+    path: Assets/Scenes/StageDesignDrafts/6.unity
+    guid: 1699b77d8ee06f54f8c0e69311f536dc
+  - enabled: 1
+    path: Assets/Scenes/StageDesignDrafts/7.unity
+    guid: 26a14eca6d2109942a54d3c767533620
   m_configObjects: {}

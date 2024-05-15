@@ -11,7 +11,6 @@ public class GameOverManager : MonoBehaviour
     public TMP_Text gameOverText;
     public static GameOverManager instance;
 
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -48,6 +47,8 @@ public class GameOverManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false); // Hide the panel
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reset the scene
+        // HACK
+        SceneManager.LoadScene(Random.Range(5, 8).ToString()); // Reset the scene
+        // end HACK
     }
 }
