@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
+    [SerializeField] Image Player1Bar;
+    [SerializeField] Image Player2Bar;
     [SerializeField] TMP_Text Player1Text;
     [SerializeField] TMP_Text Player2Text;
 
@@ -41,6 +43,8 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdateScoreboard()
     {
+        Player1Bar.color = player1.GetComponent<SpriteRenderer>().color;
+        Player2Bar.color = player2.GetComponent<SpriteRenderer>().color;
         Player1Text.text = player1.playerName + ": " + scores[player1.playerName];
         Player2Text.text = player2.playerName + ": " + scores[player2.playerName];
     }
