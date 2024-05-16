@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 public class PlayerManagerBehavior : MonoBehaviour
 {
     [SerializeField] GameObject playerPrefab;
+    [SerializeField] string playerLeftName = "Left Player";
+    [SerializeField] string playerRightName = "Right Player";
+    [SerializeField] Color playerLeftColor = Color.red;
+    [SerializeField] Color playerRightColor = Color.blue;
     [SerializeField] Transform playerLeftSpawn;
     [SerializeField] Transform playerRightSpawn;
 
@@ -26,11 +30,11 @@ public class PlayerManagerBehavior : MonoBehaviour
         PlayerMovement playerLeftScript = playerLeft.GetComponent<PlayerMovement>();
         PlayerMovement playerRightScript = playerRight.GetComponent<PlayerMovement>();
 
-        playerLeftScript.playerName = "PlayerRed";
-        playerRightScript.playerName = "PlayerBlue";
+        playerLeftScript.playerName = playerLeftName;
+        playerRightScript.playerName = playerRightName;
 
-        playerLeft.GetComponent<SpriteRenderer>().color = Color.red;
-        playerRight.GetComponent<SpriteRenderer>().color = Color.blue;
+        playerLeft.GetComponent<SpriteRenderer>().color = playerLeftColor;
+        playerRight.GetComponent<SpriteRenderer>().color = playerRightColor;
 
         playerLeftScript.enemy = playerRightScript;
         playerRightScript.enemy = playerLeftScript;
