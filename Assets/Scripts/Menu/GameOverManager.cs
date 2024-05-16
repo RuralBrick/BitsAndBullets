@@ -11,7 +11,8 @@ public class GameOverManager : MonoBehaviour
     public TMP_Text gameOverText;
     public static GameOverManager instance;
 
-    [SerializeField] string[] stageNames;
+    [SerializeField] int firstStageIndex = 1;
+    [SerializeField] int lastStageIndex = 1;
 
     private void Awake()
     {
@@ -51,6 +52,6 @@ public class GameOverManager : MonoBehaviour
         }
         gameOverPanel.SetActive(false); // Hide the panel
         Time.timeScale = 1;
-        SceneManager.LoadScene(stageNames[Random.Range(0, stageNames.Length)]); // Reset the scene
+        SceneManager.LoadScene(Random.Range(firstStageIndex, lastStageIndex + 1)); // Reset the scene
     }
 }
