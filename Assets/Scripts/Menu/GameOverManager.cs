@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] int firstStageIndex = 1;
     [SerializeField] int lastStageIndex = 1;
 
+    int[] allStageIndices = null;
+    int currentStage = 0;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -22,6 +26,8 @@ public class GameOverManager : MonoBehaviour
             return;
         }
         instance = this;
+        allStageIndices = Enumerable.Range(firstStageIndex, lastStageIndex - firstStageIndex + 1).ToArray();
+        ShuffleStageSelection();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -52,6 +58,22 @@ public class GameOverManager : MonoBehaviour
         }
         gameOverPanel.SetActive(false); // Hide the panel
         Time.timeScale = 1;
-        SceneManager.LoadScene(Random.Range(firstStageIndex, lastStageIndex + 1)); // Reset the scene
+        SceneManager.LoadScene(allStageIndices[currentStage++]); // Reset the scene
+        if (currentStage >= allStageIndices.Length)
+            ShuffleStageSelection();
+    }
+
+    void ShuffleStageSelection()
+    {
+        List<int> oldStageIndices = allStageIndices.ToList();
+        allStageIndices = new int[allStageIndices.Length];
+        currentStage = 0;
+        while (currentStage < allStageIndices.Length && oldStageIndices.Count > 0)
+        {
+            int nextPick = Random.Range(0, oldStageIndices.Count);
+            allStageIndices[currentStage++] = oldStageIndices[nextPick];
+            oldStageIndices.RemoveAt(nextPick);
+        }
+        currentStage = 0;
     }
 }
