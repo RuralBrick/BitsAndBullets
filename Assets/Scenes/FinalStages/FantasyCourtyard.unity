@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 209835543}
   - component: {fileID: 209835542}
   m_Layer: 5
-  m_Name: Player2Text
+  m_Name: Player1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2188,8 +2188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6087058dd29334da90a84d5adc17f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1Text: {fileID: 1477690470}
-  Player2Text: {fileID: 209835542}
+  Player1Text: {fileID: 209835542}
+  Player2Text: {fileID: 1477690470}
 --- !u!114 &1243591385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,10 +2265,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1098448180}
   - {fileID: 1381036927}
-  - {fileID: 1477690472}
+  - {fileID: 1098448180}
   - {fileID: 209835544}
+  - {fileID: 1477690472}
   - {fileID: 548558756}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2291,6 +2291,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 548558755}
   gameOverText: {fileID: 1700169910}
+  stageNames:
+  - FantasyCourtyard
+  - StreetFight
+  - OpenLawn
 --- !u!1001 &1314526558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4432,7 +4436,7 @@ GameObject:
   - component: {fileID: 1477690471}
   - component: {fileID: 1477690470}
   m_Layer: 5
-  m_Name: Player1Text
+  m_Name: Player2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4609,10 +4613,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.16666667
-    y: 0.037572253
-    width: 0.6666667
-    height: 0.9248555
+    x: 0.52576894
+    y: 0.07540984
+    width: 0.21280134
+    height: 0.26229507
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -5227,11 +5231,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Manager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5409869782899060846, guid: 1e3e502dbca382e43a8cc382ed65bbac, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6176567011930510606, guid: 1e3e502dbca382e43a8cc382ed65bbac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1898771793}
   m_SourcePrefab: {fileID: 100100000, guid: 1e3e502dbca382e43a8cc382ed65bbac, type: 3}
+--- !u!1 &1898771792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6176567011930510606, guid: 1e3e502dbca382e43a8cc382ed65bbac, type: 3}
+  m_PrefabInstance: {fileID: 1898771791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1898771793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898771792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0518f66061f314b4bb83ecca49f4292f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1910270403260252950, guid: d573e1a8ebcbaf6479cf54dd2d47e434, type: 3}
+  playerLeftSpawn: {fileID: 1027322815}
+  playerRightSpawn: {fileID: 1804465006}
 --- !u!1001 &1947206724
 PrefabInstance:
   m_ObjectHideFlags: 0
