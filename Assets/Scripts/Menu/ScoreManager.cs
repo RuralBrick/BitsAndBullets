@@ -74,8 +74,9 @@ public class ScoreManager : MonoBehaviour
     {
         float player_bullet_cooldown = icons[player.playerName + "_bullet_cooldown"].Item2;
         Image bullet_cooldown_icon = icons[player.playerName + "_bullet_cooldown"].Item1;
-        Debug.Log("COOLDOWN");
-        Debug.Log(player_bullet_cooldown);
+        SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
+        bullet_cooldown_icon.color = playerSprite.color;
+
 
         if (player_bullet_cooldown > 0)
         {
@@ -85,8 +86,7 @@ public class ScoreManager : MonoBehaviour
         else {
             bullet_cooldown_icon.fillAmount = 1;
         }
-        Debug.Log("FILL AMOUNT");
-        Debug.Log(bullet_cooldown_icon.fillAmount);
+
         icons[player.playerName + "_bullet_cooldown"] = (bullet_cooldown_icon, player_bullet_cooldown);
     }
 
