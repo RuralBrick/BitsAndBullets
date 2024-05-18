@@ -29,6 +29,7 @@ public class GunBehavior : MonoBehaviour
         coolingDown = true;
         spriteRenderer.color = coolDownColor;
         GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        newBullet.GetComponent<SpriteRenderer>().color = owner.GetComponent<SpriteRenderer>().color;
         BulletBehavior bulletBehavior = newBullet.GetComponent<BulletBehavior>();
         bulletBehavior.BulletSpriteDirection = direction;
         bulletBehavior.sourcePlayer = owner;

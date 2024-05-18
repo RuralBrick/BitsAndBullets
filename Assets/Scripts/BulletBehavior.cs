@@ -15,8 +15,8 @@ public class BulletBehavior : MonoBehaviour
 
     public Vector3 BulletSpriteDirection
     {
-        get => transform.up;
-        set { transform.up = value; }
+        get => transform.right;
+        set { transform.right = value; }
     }
 
     void Start()
