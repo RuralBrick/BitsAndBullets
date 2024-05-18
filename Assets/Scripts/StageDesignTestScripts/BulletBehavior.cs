@@ -53,7 +53,6 @@ namespace StageDesignTestScripts
                          .GetHit(new BulletHitInfo { damage = 1 });
                 Destroy(gameObject);
 
-                ScoreManager.instance.AddPoint(collision.gameObject);
             }
             else
             {

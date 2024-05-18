@@ -55,6 +55,11 @@ namespace StageDesignTestScripts
   
         }
 
+        public bool canFire()
+        {
+            return Time.time > nextFireTime;
+        }
+
         // Update is called once per frame
         void Update()
         {

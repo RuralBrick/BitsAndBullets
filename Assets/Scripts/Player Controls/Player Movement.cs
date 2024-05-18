@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     void OnFire()
     {
         gun.Fire(orientation);
+        ScoreManager.instance.StartBulletTimer(this);
     }
 
     void OnReset()
