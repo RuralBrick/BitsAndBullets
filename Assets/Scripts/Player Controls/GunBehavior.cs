@@ -10,6 +10,7 @@ public class GunBehavior : MonoBehaviour
     [SerializeField] Color readyColor = Color.green;
     [SerializeField] Color coolDownColor = Color.red;
     [SerializeField] float coolDownSeconds = 3f;
+    private float numShots = 3;    // How many bullets we shoot per shot
 
     SpriteRenderer spriteRenderer;
 
@@ -28,14 +29,71 @@ public class GunBehavior : MonoBehaviour
             return false;
         coolingDown = true;
         spriteRenderer.color = coolDownColor;
-        GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        newBullet.GetComponent<SpriteRenderer>().color = owner.GetComponent<SpriteRenderer>().color;
-        BulletBehavior bulletBehavior = newBullet.GetComponent<BulletBehavior>();
-        bulletBehavior.BulletSpriteDirection = direction;
-        bulletBehavior.sourcePlayer = owner;
+
+
+        // Declare some vectors for used for calculating multiple shots
+        Vector3 zDir = new Vector3(0, 0, 1);
+        Vector3 xDir = new Vector3(1, 0, 0);
+        Vector3 yDir = new Vector3(0, 1, 0);
+        Vector3 bulletSpawn = Vector3.Cross(direction, zDir);
+
+        // Shoot
+        for (int i = 0; i < numShots; i++)
+        {
+            // Where do we put mutliple shots - position and orientation
+            Vector3 bulletSpacing = (bulletSpawn * (0.25f * i - 0.125f * (numShots - 1)));
+            Vector3 bulletOrientation = Vector3.zero;
+
+            // Add appropiate spacing if we are shooting up
+            if (direction != xDir && direction != (-1f * xDir))
+            {
+                bulletSpacing += 0.6f * direction;
+            }
+
+            // Add appropiate bullet spread
+            if (direction.x >= 0 && direction.y == 0)
+            {
+                bulletOrientation -= (yDir * (0.05f * i - 0.025f * (numShots - 1)));
+            }
+            else if (direction.x < 0 && direction.y == 0)
+            {
+                bulletOrientation += (yDir * (0.05f * i - 0.025f * (numShots - 1)));
+            }
+            else if (direction.y >= 0)
+            {
+                bulletOrientation += (xDir * (0.05f * i - 0.025f * (numShots - 1)));
+            }
+            else if (direction.y < 0)
+            {
+                bulletOrientation -= (xDir * (0.05f * i - 0.025f * (numShots - 1)));
+            }
+
+            // Spawn the bullet
+            GameObject newBullet = Instantiate(bulletPrefab, transform.position + bulletSpacing, Quaternion.identity);
+
+            // Give it bullet behavior
+            BulletBehavior bulletBehavior = newBullet.GetComponent<BulletBehavior>();
+
+            // Give it direction
+            bulletBehavior.BulletSpriteDirection = direction + bulletOrientation;
+
+            // Give it the player that shot it
+            bulletBehavior.sourcePlayer = owner;
+        }
+
+
+        // Set the proper timer
         Invoke("FinishCooldown", coolDownSeconds);
         return true;
     }
+
+
+    // change the number of bullets that we shoot per shot
+    public void setNumShots(int num)
+    {
+        numShots = num;
+    }
+
 
     void FinishCooldown()
     {
