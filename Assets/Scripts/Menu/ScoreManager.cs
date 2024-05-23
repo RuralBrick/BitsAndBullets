@@ -18,8 +18,14 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TMP_Text Player2Text;
     [SerializeField] Image BulletIcon1;
     [SerializeField] Image BulletIcon2;
-    float bullet_cooldown = 3f;
- 
+    [SerializeField] Image DashIcon1;
+    [SerializeField] Image DashIcon2;
+
+    Dictionary<string, float> cooldowns = new Dictionary<string, float>
+    {
+        { "_bullet_cooldown", 3f },
+        { "_dash_cooldown", 3f }
+    };
 
     PlayerMovement player1;
     PlayerMovement player2;
@@ -46,6 +52,8 @@ public class ScoreManager : MonoBehaviour
         scores.TryAdd(player2.playerName, 0);
         icons.TryAdd(player1.playerName + "_bullet_cooldown", (BulletIcon1, 0));
         icons.TryAdd(player2.playerName + "_bullet_cooldown", (BulletIcon2, 0));
+        icons.TryAdd(player1.playerName + "_dash_cooldown", (DashIcon1, 0));
+        icons.TryAdd(player2.playerName + "_dash_cooldown", (DashIcon2, 0));
         UpdateScoreboard();
     }
 
@@ -66,28 +74,41 @@ public class ScoreManager : MonoBehaviour
     public void StartBulletTimer(PlayerMovement player)
     {
         Debug.Log("STARTING BULLET TIMER");
-        (Image, float) cooldown_restarted = (icons[player.playerName + "_bullet_cooldown"].Item1, bullet_cooldown);
+        (Image, float) cooldown_restarted = (icons[player.playerName + "_bullet_cooldown"].Item1, cooldowns["_bullet_cooldown"]);
         icons[player.playerName + "_bullet_cooldown"] = cooldown_restarted;
+    }
+
+    public void StartDashTimer(PlayerMovement player)
+    {
+        Debug.Log("STARTING DASH TIMER");
+        (Image, float) cooldown_restarted = (icons[player.playerName + "_dash_cooldown"].Item1, cooldowns["_dash_cooldown"]);
+        icons[player.playerName + "_dash_cooldown"] = cooldown_restarted;
     }
 
     private void updateIcons(PlayerMovement player)
     {
-        float player_bullet_cooldown = icons[player.playerName + "_bullet_cooldown"].Item2;
-        Image bullet_cooldown_icon = icons[player.playerName + "_bullet_cooldown"].Item1;
-        SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
-        bullet_cooldown_icon.color = playerSprite.color;
-
-
-        if (player_bullet_cooldown > 0)
+        foreach (string icon_type in cooldowns.Keys)
         {
-            bullet_cooldown_icon.fillAmount = 1f - (player_bullet_cooldown / bullet_cooldown);
-            player_bullet_cooldown -= Time.deltaTime;
-        }
-        else {
-            bullet_cooldown_icon.fillAmount = 1;
+            float current_cooldown = icons[player.playerName + icon_type].Item2;
+            Image icon = icons[player.playerName + icon_type].Item1;
+            SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
+            icon.color = playerSprite.color;
+
+            if (current_cooldown > 0)
+            {
+                Debug.Log(icon_type);
+                Debug.Log(current_cooldown);
+                icon.fillAmount = 1f - (current_cooldown / cooldowns[icon_type]);
+                current_cooldown -= Time.deltaTime;
+            }
+            else
+            {
+                icon.fillAmount = 1;
+            }
+
+            icons[player.playerName + icon_type] = (icon, current_cooldown);
         }
 
-        icons[player.playerName + "_bullet_cooldown"] = (bullet_cooldown_icon, player_bullet_cooldown);
     }
 
     // Update is called once per frame
