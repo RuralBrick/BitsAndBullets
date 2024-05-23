@@ -19,6 +19,12 @@ public class BulletBehavior : MonoBehaviour
         set { transform.right = value; }
     }
 
+    // Set the speed of the bullet
+    public void changeBulletSpeed(float input)
+    {
+        bulletSpeed = input;
+    }
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
