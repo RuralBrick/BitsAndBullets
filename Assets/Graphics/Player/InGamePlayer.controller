@@ -263,6 +263,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: DashEnd
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: NormalizedSpeed
+    m_EventTreshold: 0.5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4608127104085498879}
   m_Solo: 0
@@ -317,6 +320,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: DashEnd
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: NormalizedSpeed
+    m_EventTreshold: 0.5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9139308945315134355}
   m_Solo: 0
