@@ -85,7 +85,7 @@ public class GunBehavior : MonoBehaviour
             bulletBehavior.changeBulletSpeed(bulletSpeed);
         }
 
-
+        ScoreManager.instance.StartBulletTimer(owner);
         // Set the proper timer
         Invoke("FinishCooldown", coolDownSeconds);
         return true;

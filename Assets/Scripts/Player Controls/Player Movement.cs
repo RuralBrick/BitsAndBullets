@@ -15,16 +15,24 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private GunBehavior gun;
+    new private Collider2D collider;
 
     // Decalre the Vector 2
     Vector2 move;
     Vector2 orientation;
+
+    float dash_time = 0f;
+    float dash_cooldown = 3f;
+    float dash_speed = 5f;
+    Vector2 dash_dir = Vector2.zero;
+
 
     // Start is called before the first frame update
     void Start()
     {
         // Fetch the RigidBody from the game object
         rb = gameObject.GetComponent<Rigidbody2D>();
+        collider = gameObject.GetComponent<Collider2D>();
         animator = gameObject.GetComponent<Animator>();
         gun = gameObject.GetComponentInChildren<GunBehavior>();
         gun.owner = this;
@@ -39,8 +47,17 @@ public class PlayerMovement : MonoBehaviour
     {
         // Moving Code -------------------------------------------------------------------------------------------
 
+        if (dash_time > 0f)
+        {
+            rb.velocity = dash_dir * playerSpeed * dash_speed;
+            dash_time -= Time.deltaTime;
+            return;
+        }
+
+        collider.enabled = true;
         // Set the rigidbody velocity to the input direction
         rb.velocity = move * playerSpeed;
+        animator.SetTrigger("DashEnd");
         animator.SetFloat("NormalizedSpeed", move.magnitude);
 
         // Rotate to put is in the direction of motion - ONLY if we are moving
@@ -54,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
             // Also store this orientation for firing purposes
             orientation = move.normalized;
         }
+
+        dash_cooldown -= Time.deltaTime;
     }
 
     // Get the move input
@@ -67,12 +86,24 @@ public class PlayerMovement : MonoBehaviour
     void OnFire()
     {
         gun.Fire(orientation);
-        ScoreManager.instance.StartBulletTimer(this);
     }
-
+   
     void OnReset()
     {
         GameOverManager.instance.ResetGame();
+    }
+
+    void OnDash()
+    {
+        if (dash_cooldown < 0f)
+        {
+            dash_time = 0.1f;
+            dash_dir = move;
+            dash_cooldown = 3f;
+            ScoreManager.instance.StartDashTimer(this);
+            animator.SetTrigger("DashStart");
+            collider.enabled = false;
+        }
     }
 
     public void GetHit(BulletHitInfo hitInfo)

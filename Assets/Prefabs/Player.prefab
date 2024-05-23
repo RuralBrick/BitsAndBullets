@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
+  enemy: {fileID: 0}
   playerSpeed: 5
 --- !u!1 &2229383220609362405
 GameObject:
@@ -350,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8502b545e8fa7469a705930c9a2c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   bulletPrefab: {fileID: 6851244308320667161, guid: 801597289d1f6c94eb14c2fd8d3d2908, type: 3}
   readyColor: {r: 0, g: 1, b: 0, a: 1}
   coolDownColor: {r: 1, g: 0, b: 0, a: 1}
