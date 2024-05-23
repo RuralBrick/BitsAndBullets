@@ -10,7 +10,8 @@ public class GunBehavior : MonoBehaviour
     [SerializeField] Color readyColor = Color.green;
     [SerializeField] Color coolDownColor = Color.red;
     [SerializeField] float coolDownSeconds = 3f;
-    private float numShots = 3;    // How many bullets we shoot per shot
+    private float numShots = 1;    // How many bullets we shoot per shot - DEFAULT
+    private float bulletSpeed = 10f;    // How fast does each bullet move - DEFAULT
 
     SpriteRenderer spriteRenderer;
 
@@ -79,6 +80,9 @@ public class GunBehavior : MonoBehaviour
 
             // Give it the player that shot it
             bulletBehavior.sourcePlayer = owner;
+
+            // Set the appropiate bullet speed
+            bulletBehavior.changeBulletSpeed(bulletSpeed);
         }
 
         ScoreManager.instance.StartBulletTimer(owner);
@@ -88,13 +92,43 @@ public class GunBehavior : MonoBehaviour
     }
 
 
+    // Functions for Shotgun ---------------------------------------------
     // change the number of bullets that we shoot per shot
     public void setNumShots(int num)
     {
         numShots = num;
     }
 
+    // Increase the number of bullets that we shoot per shot
+    public void increaseNumShots()
+    {
+        numShots += 1;
+    }
+    
+    // Functions for bullet speed ------------------------------------------
+    // Increase the bullet speed by the provided input
+    public void increaseBulletSpeed(float input)
+    {
+        bulletSpeed += input;
+    }
 
+    // Set the bullet speed to the provided input
+    public void setBulletSpeed(float input)
+    {
+        bulletSpeed = input;
+    }
+
+    // Set the bullet speed to a RANDOM value (1-20)
+    public void setBulletSpeedRAND()
+    {
+
+    }
+
+
+
+
+
+    // Other stuff ------------------------------------------------------------
     void FinishCooldown()
     {
         spriteRenderer.color = readyColor;
