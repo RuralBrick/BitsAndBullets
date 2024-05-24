@@ -85,6 +85,17 @@ public class ScoreManager : MonoBehaviour
         icons[player.playerName + "_dash_cooldown"] = cooldown_restarted;
     }
 
+    public void ResetIcons()
+    {
+        List<string> keys = new List<string>(icons.Keys);
+        foreach (string icon_name in keys)
+        {
+            Image icon = icons[icon_name].Item1;
+            icons[icon_name] = (icon, 0);
+        }
+        Debug.Log("Icons Reset");
+    }
+
     private void updateIcons(PlayerMovement player)
     {
         foreach (string icon_type in cooldowns.Keys)
@@ -96,8 +107,6 @@ public class ScoreManager : MonoBehaviour
 
             if (current_cooldown > 0)
             {
-                Debug.Log(icon_type);
-                Debug.Log(current_cooldown);
                 icon.fillAmount = 1f - (current_cooldown / cooldowns[icon_type]);
                 current_cooldown -= Time.deltaTime;
             }

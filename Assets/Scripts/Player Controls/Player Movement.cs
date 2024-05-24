@@ -15,24 +15,28 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private GunBehavior gun;
-    private Collider2D collider;
+    private Collider2D player_collider;
 
     // Decalre the Vector 2
     Vector2 move;
     Vector2 orientation;
 
-    float dash_time = 0f;
     float dash_cooldown = 3f;
+    float dash_duration = 0.1f;
     float dash_speed = 5f;
-    Vector2 dash_dir = Vector2.zero;
+    bool dash_available = true;
+    bool is_dashing = false;
 
+
+    Vector2 dash_dir = Vector2.zero;
+    int bullet_layer;
 
     // Start is called before the first frame update
     void Start()
     {
         // Fetch the RigidBody from the game object
         rb = gameObject.GetComponent<Rigidbody2D>();
-        collider = gameObject.GetComponent<Collider2D>();
+        player_collider = gameObject.GetComponent<Collider2D>();
         animator = gameObject.GetComponent<Animator>();
         gun = gameObject.GetComponentInChildren<GunBehavior>();
         gun.owner = this;
@@ -40,24 +44,21 @@ public class PlayerMovement : MonoBehaviour
         // Assign value to move vector - 0 for now
         move = new Vector2(0, 0);
         orientation = new Vector2(1, 0);
+        bullet_layer = LayerMask.NameToLayer("Bullet");
     }
 
     // Update is called once per frame
     void Update()
     {
         // Moving Code -------------------------------------------------------------------------------------------
-
-        if (dash_time > 0f)
+        if (is_dashing)
         {
             rb.velocity = dash_dir * playerSpeed * dash_speed;
-            dash_time -= Time.deltaTime;
             return;
         }
 
-        collider.enabled = true;
         // Set the rigidbody velocity to the input direction
         rb.velocity = move * playerSpeed;
-        animator.SetTrigger("DashEnd");
         animator.SetFloat("NormalizedSpeed", move.magnitude);
 
         // Rotate to put is in the direction of motion - ONLY if we are moving
@@ -71,8 +72,6 @@ public class PlayerMovement : MonoBehaviour
             // Also store this orientation for firing purposes
             orientation = move.normalized;
         }
-
-        dash_cooldown -= Time.deltaTime;
     }
 
     // Get the move input
@@ -95,14 +94,41 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDash()
     {
-        if (dash_cooldown < 0f)
+        if (dash_available)
         {
-            dash_time = 0.1f;
+            is_dashing = true;
+            dash_available = false;
             dash_dir = move;
-            dash_cooldown = 3f;
-            ScoreManager.instance.StartDashTimer(this);
+
             animator.SetTrigger("DashStart");
-            collider.enabled = false;
+            Invoke("EndDash", dash_duration);
+            IgnoreBulletCollisions(true);
+        }
+    }
+
+    void EndDash()
+    {
+        is_dashing = false;
+        animator.SetTrigger("DashEnd");
+        Invoke("DashAvailable", dash_cooldown);
+        ScoreManager.instance.StartDashTimer(this);
+        IgnoreBulletCollisions(false);
+    }
+
+    void DashAvailable()
+    {
+        dash_available = true;
+    }
+
+    void IgnoreBulletCollisions(bool ignore)
+    {
+        Collider2D[] colliders = FindObjectsOfType<Collider2D>();
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.layer == bullet_layer)
+            {
+                Physics2D.IgnoreCollision(player_collider, collider, ignore);
+            }
         }
     }
 
@@ -110,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log($"I, {playerName}, have been hit!");
         ScoreManager.instance.AddPoint(enemy);
+        ScoreManager.instance.ResetIcons();
         GameOverManager.instance.PlayerWins(enemy);
     }
 }
