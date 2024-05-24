@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private GunBehavior gun;
-    private Collider2D player_collider;
+    new private Collider2D collider;
 
     // Decalre the Vector 2
     Vector2 move;
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gun.Fire(orientation);
     }
-   
+
     void OnReset()
     {
         GameOverManager.instance.ResetGame();
