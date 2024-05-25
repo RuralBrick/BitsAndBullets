@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private GunBehavior gun;
-    new private Collider2D collider;
+    private Collider2D player_collider;
 
     // Decalre the Vector 2
     Vector2 move;
