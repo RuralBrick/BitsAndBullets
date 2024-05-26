@@ -33,6 +33,9 @@ public class PlayerManagerBehavior : MonoBehaviour
         playerLeftScript.playerName = playerLeftName;
         playerRightScript.playerName = playerRightName;
 
+        playerLeftScript.FaceInDirection(Vector3.right);
+        playerRightScript.FaceInDirection(Vector3.left);
+
         playerLeft.GetComponent<SpriteRenderer>().color = playerLeftColor;
         playerRight.GetComponent<SpriteRenderer>().color = playerRightColor;
 

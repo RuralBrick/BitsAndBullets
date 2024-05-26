@@ -18,8 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private Collider2D player_collider;
 
     // Decalre the Vector 2
-    Vector2 move;
-    Vector2 orientation;
+    // Assign value to move vector - 0 for now
+    Vector2 move = new Vector2(0, 0);
+    Vector2 orientation = new Vector2(1, 0);
 
     float dash_cooldown = 3f;
     float dash_duration = 0.1f;
@@ -41,9 +42,6 @@ public class PlayerMovement : MonoBehaviour
         gun = gameObject.GetComponentInChildren<GunBehavior>();
         gun.owner = this;
 
-        // Assign value to move vector - 0 for now
-        move = new Vector2(0, 0);
-        orientation = new Vector2(1, 0);
         bullet_layer = LayerMask.NameToLayer("Bullet");
     }
 
@@ -64,14 +62,19 @@ public class PlayerMovement : MonoBehaviour
         // Rotate to put is in the direction of motion - ONLY if we are moving
         if (move != Vector2.zero)
         {
-            if (move.x < 0)
-                transform.localScale = new Vector3(-1, 1, 1);
-            else
-                transform.localScale = new Vector3(1, 1, 1);
-
-            // Also store this orientation for firing purposes
-            orientation = move.normalized;
+            FaceInDirection(move);
         }
+    }
+
+    public void FaceInDirection(Vector3 direction)
+    {
+        if (direction.x < 0)
+            transform.localScale = new Vector3(-1, 1, 1);
+        else
+            transform.localScale = new Vector3(1, 1, 1);
+
+        // Also store this orientation for firing purposes
+        orientation = direction.normalized;
     }
 
     // Get the move input
