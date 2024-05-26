@@ -7,11 +7,17 @@ namespace Portals
 {
     public class PortalGroupBehavior : MonoBehaviour
     {
+        [SerializeField] Color color = Color.white;
+
         PortalBehavior[] portals;
 
         void Start()
         {
             portals = GetComponentsInChildren<PortalBehavior>();
+            foreach(PortalBehavior p in portals)
+            {
+                p.SetColor(color);
+            }
         }
 
         public void Send(PortalBehavior source, GameObject obj)

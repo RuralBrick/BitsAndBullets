@@ -15,6 +15,13 @@ namespace Portals
             group = GetComponentInParent<PortalGroupBehavior>();
         }
 
+        public void SetColor(Color color)
+        {
+            GetComponent<SpriteRenderer>().color = color;
+            var particles = GetComponentInChildren<ParticleSystem>().main;
+            particles.startColor = color;
+        }
+
         public void Receive(GameObject obj)
         {
             arrivals.Add(obj);
