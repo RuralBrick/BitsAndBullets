@@ -9,10 +9,12 @@ namespace PowerupSystem
         [SerializeField] float startDelaySeconds = 10f;
         [SerializeField] float spawnMinIntervalSeconds = 8f;
         [SerializeField] float spawnMaxIntervalSeconds = 10f;
-        [SerializeField] SpawnerBehavior[] spawners;
+        
+        SpawnerBehavior[] spawners;
 
         void Start()
         {
+            spawners = GetComponentsInChildren<SpawnerBehavior>();
             Invoke("SpawnPowerup", startDelaySeconds);
         }
 
