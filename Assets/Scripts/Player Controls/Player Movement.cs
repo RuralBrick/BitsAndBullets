@@ -142,4 +142,44 @@ public class PlayerMovement : MonoBehaviour
         ScoreManager.instance.ResetIcons();
         GameOverManager.instance.PlayerWins(enemy);
     }
+
+
+
+    // Power ups ----------------------------------------------------------
+    // Set the number of shots that we shoot to the input n
+    public void setNumShots(int n)
+    {
+        gun.setNumShots(n);
+    }
+
+    // Increase the number of shots that we shoot by 1
+    public void increaseNumShots()
+    {
+        gun.increaseNumShots();
+    }
+
+    // set the number of shots that we shoot to a random value between 1-10 (CHAOS!!! >:D)
+    public void setNumShotsRAND()
+    {
+        gun.setNumShotsRAND();
+    }
+
+    // Set the bullet speed to the input n
+    public void setBulletSpeed(float n)
+    {
+        gun.setBulletSpeed(n);
+    }
+
+    // Increase the bullet speed by the float n
+    public void increaseBulletSpeed(float n)
+    {
+        gun.increaseBulletSpeed(n);
+    }
+
+    // set the bullet speed to a random value between 1 and 20
+    public void setBulletSpeedRAND()
+    {
+        gun.setBulletSpeedRAND();
+    }
+
 }

@@ -104,7 +104,14 @@ public class GunBehavior : MonoBehaviour
     {
         numShots += 1;
     }
-    
+
+    // Set the number of bullets that we shoot to a random number between 1 and 10
+    public void setNumShotsRAND()
+    {
+        numShots = Random.Range(1, 10);
+    }
+
+
     // Functions for bullet speed ------------------------------------------
     // Increase the bullet speed by the provided input
     public void increaseBulletSpeed(float input)
@@ -121,7 +128,7 @@ public class GunBehavior : MonoBehaviour
     // Set the bullet speed to a RANDOM value (1-20)
     public void setBulletSpeedRAND()
     {
-
+        bulletSpeed = Random.Range(1, 20);
     }
 
 
