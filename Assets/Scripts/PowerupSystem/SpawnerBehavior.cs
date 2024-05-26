@@ -15,7 +15,7 @@ namespace PowerupSystem
             GetComponent<SpriteRenderer>().enabled = false;
         }
 
-        public void SpawnPickup()
+        public void SpawnPickup(PowerupInfo info)
         {
             if (currentPickup != null)
             {
@@ -23,7 +23,7 @@ namespace PowerupSystem
                 return;
             }
             var pickup = Instantiate(pickupPrefab, transform.position, Quaternion.identity).GetComponent<PickupBehavior>();
-            // TODO: Initialize pickup
+            pickup.Initialize(info);
             currentPickup = pickup;
         }
     }

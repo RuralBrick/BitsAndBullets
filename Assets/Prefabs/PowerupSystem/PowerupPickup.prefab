@@ -216,6 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade44a2b74ba7a64697fd89d6ba1370b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 2622792707763361288}
+  periodSeconds: 1.75
+  amplitudeUnits: 0.05
 --- !u!58 &2316732209889465896
 CircleCollider2D:
   m_ObjectHideFlags: 0
