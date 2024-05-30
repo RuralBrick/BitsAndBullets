@@ -2931,6 +2931,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireSound: {fileID: 8300000, guid: ba03d82aa0b2bad419f13bef3e8c69dc, type: 3}
+  dashSound: {fileID: 8300000, guid: 7ac404d13d3b6fa46b1490c2fb14f046, type: 3}
+  powerUpCollectSound: {fileID: 8300000, guid: 8588e36c52976f94d811e5eea2f13ddf, type: 3}
 --- !u!1001 &1262422610
 PrefabInstance:
   m_ObjectHideFlags: 0

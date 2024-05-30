@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dash_available)
         {
+            SoundEffectManager.Instance.PlaySound("dash");
             is_dashing = true;
             dash_available = false;
             dash_dir = move;

@@ -9,6 +9,8 @@ public class SoundEffectManager : MonoBehaviour
     private AudioSource audioSource;
 
     public AudioClip fireSound;
+    public AudioClip dashSound;
+    public AudioClip powerUpCollectSound;
 
     Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
 
@@ -31,11 +33,12 @@ public class SoundEffectManager : MonoBehaviour
     void Start()
     {
         sounds["fire"] = fireSound;
+        sounds["dash"] = dashSound;
+        sounds["powerupCollect"] = powerUpCollectSound;
     }
 
     public void PlaySound(string soundName)
     {
-        Debug.Log("FIRED FROM SOUND EFFECT MANAGER");
         audioSource.PlayOneShot(sounds[soundName]);
     }
 

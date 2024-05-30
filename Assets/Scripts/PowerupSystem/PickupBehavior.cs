@@ -40,6 +40,7 @@ namespace PowerupSystem
             {
                 var player = collision.GetComponent<PlayerMovement>();
                 Debug.Log($"{player.playerName} has picked up the {info.name} powerup!");
+                SoundEffectManager.Instance.PlaySound("powerupCollect");
                 info.activator(player);
                 Destroy(gameObject);
             }
