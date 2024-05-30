@@ -108,7 +108,7 @@ public class ScoreManager : MonoBehaviour
             if (current_cooldown > 0)
             {
                 icon.fillAmount = 1f - (current_cooldown / cooldowns[icon_type]);
-                current_cooldown -= Time.deltaTime;
+                current_cooldown -= player.cooldownMutliplier * Time.deltaTime;
             }
             else
             {

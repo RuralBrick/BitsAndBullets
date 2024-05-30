@@ -31,6 +31,11 @@ public class PlayerMovement : MonoBehaviour
     Vector2 dash_dir = Vector2.zero;
     int bullet_layer;
 
+
+    // multiplier for reducing cooldown times
+    public float cooldownMutliplier = 1f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // update the cooldownMultiplier - used for updating cooldown sprites
+        cooldownMutliplier = 3 / gun.returnBulletCooldown();
+
+
         // Moving Code -------------------------------------------------------------------------------------------
         if (is_dashing)
         {
@@ -182,5 +191,26 @@ public class PlayerMovement : MonoBehaviour
     {
         gun.setBulletSpeedRAND();
     }
+
+    // set the bullet cooldown to the specified value
+    public void setBulletCoolDown(float n)
+    {
+        gun.setBulletCoolDown(n);
+    }
+
+    // Decrease the bullet cooldown by 1 - goes down to 0
+    public void decreaseBulletCoolDown()
+    {
+        gun.decreaseBulletCooldown();
+    }
+
+    // Set teh bullet cooldown to 0.1
+    public void machineGun()
+    {
+        gun.machineGun();
+    }
+
+
+
 
 }

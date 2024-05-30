@@ -9,9 +9,10 @@ public class GunBehavior : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Color readyColor = Color.green;
     [SerializeField] Color coolDownColor = Color.red;
-    [SerializeField] float coolDownSeconds = 3f;
+    private float coolDownSeconds = 3f;    // How long it takes to reload after you shoot - DEFAULT
     private float numShots = 1;    // How many bullets we shoot per shot - DEFAULT
     private float bulletSpeed = 10f;    // How fast does each bullet move - DEFAULT
+
 
     SpriteRenderer spriteRenderer;
 
@@ -131,6 +132,37 @@ public class GunBehavior : MonoBehaviour
     {
         bulletSpeed = Random.Range(1, 20);
     }
+
+
+    // Functions for bullet cooldown -------------------------------------------
+    // Decrease the bullet cooldown by 1
+    public void decreaseBulletCooldown()
+    {
+        // Only decrease the cooldown if we have the space to do so
+        if (coolDownSeconds > 0)
+        {
+            coolDownSeconds -= 1;
+        }
+    }
+
+    // Set the bulletCooldown to 0.1 - Machine gun!
+    public void machineGun()
+    {
+        coolDownSeconds = 0.1f;
+    }
+
+    // Set the bulletCooldown to the specified value
+    public void setBulletCoolDown(float n)
+    {
+        coolDownSeconds = n;
+    }
+
+    // return the current bullet cool down
+    public float returnBulletCooldown()
+    {
+        return coolDownSeconds;
+    }
+
 
 
 
