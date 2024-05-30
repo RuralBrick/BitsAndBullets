@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Portals
@@ -32,7 +33,12 @@ namespace Portals
         {
             if (arrivals.Contains(collision.gameObject))
                 return;
-            group.Send(this, collision.gameObject);
+            if (collision.CompareTag("Player")
+                || collision.CompareTag("Bullet")
+                || collision.CompareTag("Obstacle"))
+            {
+                group.Send(this, collision.gameObject);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
