@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalStages/Corridors.unity
     guid: 1c4c78690d8d945488e9179928a79845
+  - enabled: 1
+    path: Assets/Scenes/FinalStages/Dungeon.unity
+    guid: cb4be57ffb83ce944855009cdcde5447
   m_configObjects: {}

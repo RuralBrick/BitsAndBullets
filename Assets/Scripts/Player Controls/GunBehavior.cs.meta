@@ -3,7 +3,11 @@ guid: 7f8502b545e8fa7469a705930c9a2c01
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - owner: {instanceID: 0}
+  - bulletPrefab: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - gunFireSound: {fileID: 8300000, guid: ba03d82aa0b2bad419f13bef3e8c69dc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

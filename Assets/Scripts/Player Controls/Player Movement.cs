@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private GunBehavior gun;
     private Collider2D player_collider;
 
+    public AudioSource audioSource;
+    public AudioClip gunFireSound;
     // Decalre the Vector 2
     // Assign value to move vector - 0 for now
     Vector2 move = new Vector2(0, 0);
@@ -28,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     bool dash_available = true;
     bool is_dashing = false;
 
-
     Vector2 dash_dir = Vector2.zero;
     int bullet_layer;
 
@@ -39,8 +40,14 @@ public class PlayerMovement : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         player_collider = gameObject.GetComponent<Collider2D>();
         animator = gameObject.GetComponent<Animator>();
+
         gun = gameObject.GetComponentInChildren<GunBehavior>();
         gun.owner = this;
+        Debug.Log(gunFireSound);
+        gun.audioSource = audioSource;
+        Debug.Log(audioSource);
+        gun.gunFireSound = gunFireSound;
+
 
         bullet_layer = LayerMask.NameToLayer("Bullet");
     }
