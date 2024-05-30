@@ -8,6 +8,7 @@ namespace Portals
     public class PortalGroupBehavior : MonoBehaviour
     {
         [SerializeField] Color color = Color.white;
+        [SerializeField] bool duplicateNonPlayers = false;
 
         PortalBehavior[] portals;
 
@@ -36,7 +37,7 @@ namespace Portals
                 destination.Receive(arrival);
                 arrival = null;
 
-                if (obj.CompareTag("Player"))
+                if (!duplicateNonPlayers || obj.CompareTag("Player"))
                     break;
             }
         }
