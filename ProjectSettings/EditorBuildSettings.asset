@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalStages/Dungeon.unity
     guid: cb4be57ffb83ce944855009cdcde5447
+  - enabled: 1
+    path: Assets/Scenes/FinalStages/Cells.unity
+    guid: adcc8dd722176bb4fb6c687ca6e329d6
   m_configObjects: {}

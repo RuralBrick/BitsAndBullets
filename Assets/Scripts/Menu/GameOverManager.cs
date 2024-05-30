@@ -45,6 +45,7 @@ public class GameOverManager : MonoBehaviour
 
     public void PlayerWins(PlayerMovement player)
     {
+        SoundEffectManager.Instance.PlaySound("gameOver");
         gameOverText.text = "Game Over! \n" + player.playerName + " wins!";
         gameOverPanel.SetActive(true);
         Time.timeScale = 0;

@@ -11,6 +11,7 @@ public class SoundEffectManager : MonoBehaviour
     public AudioClip fireSound;
     public AudioClip dashSound;
     public AudioClip powerUpCollectSound;
+    public AudioClip gameOverSound;
 
     Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
 
@@ -35,6 +36,7 @@ public class SoundEffectManager : MonoBehaviour
         sounds["fire"] = fireSound;
         sounds["dash"] = dashSound;
         sounds["powerupCollect"] = powerUpCollectSound;
+        sounds["gameOver"] = gameOverSound;
     }
 
     public void PlaySound(string soundName)
