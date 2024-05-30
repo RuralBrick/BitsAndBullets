@@ -46,9 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5ea287472c8c94c9c5e3a87c28cf3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners:
-  - {fileID: 6051980249093440995}
-  - {fileID: 4863952688471368733}
+  powerups:
+  - name: Burst Fire
+    icon: {fileID: 21300000, guid: c9581c2162623c149959a8fc7d54f4b8, type: 3}
+    spawnOdds: 2
+  - name: Change Bullet Velocity
+    icon: {fileID: 21300000, guid: 49cfe97e7f6d389479a5bb2eb8585c9b, type: 3}
+    spawnOdds: 2
+  - name: Shield
+    icon: {fileID: 21300000, guid: d6e0c61226318b64db8f2ca9069b2dae, type: 3}
+    spawnOdds: 1
+  startDelaySeconds: 5
+  spawnMinIntervalSeconds: 3
+  spawnMaxIntervalSeconds: 10
 --- !u!1001 &7160703061033557677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,17 +121,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8103382124926091805, guid: 074cc0aa0277b934c802a0c62c16307a, type: 3}
   m_PrefabInstance: {fileID: 7160703061033557677}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4863952688471368733 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2368847557877136048, guid: 074cc0aa0277b934c802a0c62c16307a, type: 3}
-  m_PrefabInstance: {fileID: 7160703061033557677}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a752cc1f6d27b4cac675b843c17f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8296516399354117971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,14 +183,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8103382124926091805, guid: 074cc0aa0277b934c802a0c62c16307a, type: 3}
   m_PrefabInstance: {fileID: 8296516399354117971}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6051980249093440995 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2368847557877136048, guid: 074cc0aa0277b934c802a0c62c16307a, type: 3}
-  m_PrefabInstance: {fileID: 8296516399354117971}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a752cc1f6d27b4cac675b843c17f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
