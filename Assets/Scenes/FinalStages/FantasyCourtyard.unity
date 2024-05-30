@@ -2821,7 +2821,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 548558755}
   gameOverText: {fileID: 1700169910}
   firstStageIndex: 1
-  lastStageIndex: 8
+  lastStageIndex: 9
 --- !u!82 &1243591390
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5422,10 +5422,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.15284039
-    y: 0.06032907
-    width: 0.69251573
-    height: 0.87751377
+    x: 1.3353331
+    y: 0.22727273
+    width: 0.52958214
+    height: 0.6734007
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalStages/Cells.unity
     guid: adcc8dd722176bb4fb6c687ca6e329d6
+  - enabled: 1
+    path: Assets/Scenes/FinalStages/StreetWar.unity
+    guid: f5453a4690b7604479ed46376c333815
   m_configObjects: {}
