@@ -12,6 +12,7 @@ namespace PowerupSystem
         public string name;
         public Sprite icon;
         public PowerupActivator activator;
+        public int spawnOdds;
     }
 
     public class SpawnerGroupBehavior : MonoBehaviour
@@ -21,35 +22,58 @@ namespace PowerupSystem
             new PowerupInfo()
             {
                 name = "Burst Fire",
-                activator = delegate(PlayerMovement player) { Debug.Log($"(Pretend that I gave {player.playerName} burst fire)"); }
+                activator = delegate(PlayerMovement player)
+                {
+                    player.increaseNumShots();
+                },
+                spawnOdds = 1
             },
             new PowerupInfo()
             {
                 name = "Change Bullet Velocity",
-                activator = delegate(PlayerMovement player) { Debug.Log($"(Pretend that I changed {player.playerName}'s bullet velocity)"); }
+                activator = delegate(PlayerMovement player)
+                {
+                    player.increaseBulletSpeed(5);
+                },
+                spawnOdds = 1
             },
             new PowerupInfo()
             {
                 name = "Shield",
-                activator = delegate(PlayerMovement player) { Debug.Log($"(Pretend that I gave {player.playerName} a shield)"); }
+                activator = delegate(PlayerMovement player)
+                {
+                    Debug.Log($"(Pretend that I gave {player.playerName} a shield)");
+                },
+                spawnOdds = 1
             }
         };
 
         [SerializeField] float startDelaySeconds = 10f;
         [SerializeField] float spawnMinIntervalSeconds = 8f;
         [SerializeField] float spawnMaxIntervalSeconds = 10f;
-        
+
+        List<PowerupInfo> powerupPool;
         SpawnerBehavior[] spawners;
 
         void Start()
         {
+            powerupPool = new List<PowerupInfo>();
+            foreach (var powerup in powerups)
+            {
+                for (int i = 0; i < powerup.spawnOdds; i++)
+                {
+                    powerupPool.Add(powerup);
+                }
+            }
             spawners = GetComponentsInChildren<SpawnerBehavior>();
             Invoke("SpawnPowerup", startDelaySeconds);
         }
 
         void SpawnPowerup()
         {
-            spawners[Random.Range(0, spawners.Length)].SpawnPickup(powerups[Random.Range(0, powerups.Length)]);
+            var spawner = spawners[Random.Range(0, spawners.Length)];
+            var powerup = powerupPool[Random.Range(0, powerupPool.Count)];
+            spawner.SpawnPickup(powerup);
             Invoke("SpawnPowerup", Random.Range(spawnMinIntervalSeconds, spawnMaxIntervalSeconds));
         }
     }
