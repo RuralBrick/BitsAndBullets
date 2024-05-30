@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private GunBehavior gun;
     private Collider2D player_collider;
 
-    public AudioSource audioSource;
-    public AudioClip gunFireSound;
     // Decalre the Vector 2
     // Assign value to move vector - 0 for now
     Vector2 move = new Vector2(0, 0);
@@ -43,11 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
         gun = gameObject.GetComponentInChildren<GunBehavior>();
         gun.owner = this;
-        Debug.Log(gunFireSound);
-        gun.audioSource = audioSource;
-        Debug.Log(audioSource);
-        gun.gunFireSound = gunFireSound;
-
 
         bullet_layer = LayerMask.NameToLayer("Bullet");
     }

@@ -18,9 +18,6 @@ public class GunBehavior : MonoBehaviour
     uint numObstaclesInside = 0;
     bool coolingDown = false;
 
-    public AudioSource audioSource;
-    public AudioClip gunFireSound;
-
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,7 +31,7 @@ public class GunBehavior : MonoBehaviour
 
         coolingDown = true;
         spriteRenderer.color = coolDownColor;
-        audioSource.PlayOneShot(gunFireSound);
+        SoundEffectManager.Instance.PlaySound("fire");
 
         // Declare some vectors for used for calculating multiple shots
         Vector3 zDir = new Vector3(0, 0, 1);

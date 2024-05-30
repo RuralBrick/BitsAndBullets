@@ -10,8 +10,6 @@ public class PlayerManagerBehavior : MonoBehaviour
     [SerializeField] Color playerRightColor = Color.blue;
     [SerializeField] Transform playerLeftSpawn;
     [SerializeField] Transform playerRightSpawn;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip gunFireSound;
 
     void Start()
     {
@@ -43,12 +41,6 @@ public class PlayerManagerBehavior : MonoBehaviour
 
         playerLeftScript.enemy = playerRightScript;
         playerRightScript.enemy = playerLeftScript;
-
-        playerLeftScript.audioSource = audioSource;
-        playerRightScript.audioSource = audioSource;
-
-        playerLeftScript.gunFireSound = gunFireSound;
-        playerRightScript.gunFireSound = gunFireSound;
 
         ScoreManager.instance.Initialize(playerLeftScript, playerRightScript);
     }
