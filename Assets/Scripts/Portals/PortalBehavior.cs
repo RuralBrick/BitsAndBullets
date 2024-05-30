@@ -32,10 +32,7 @@ namespace Portals
         {
             if (arrivals.Contains(collision.gameObject))
                 return;
-            if (collision.CompareTag("Player") || collision.CompareTag("Bullet"))
-            {
-                group.Send(this, collision.gameObject);
-            }
+            group.Send(this, collision.gameObject);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
