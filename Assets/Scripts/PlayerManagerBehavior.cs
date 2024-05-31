@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +12,8 @@ public class PlayerManagerBehavior : MonoBehaviour
     [SerializeField] Color playerRightColor = Color.blue;
     [SerializeField] Transform playerLeftSpawn;
     [SerializeField] Transform playerRightSpawn;
+
+    public List<string> CurrentPlayers { get; private set; }
 
     void Start()
     {
@@ -42,6 +46,18 @@ public class PlayerManagerBehavior : MonoBehaviour
         playerLeftScript.enemy = playerRightScript;
         playerRightScript.enemy = playerLeftScript;
 
-        ScoreManager.instance.Initialize(playerLeftScript, playerRightScript);
+        CurrentPlayers = new List<string> { playerLeftName, playerRightName };
+
+        ScoreManager.instance.Initialize(this, new PlayerMovement[] { playerLeftScript, playerRightScript });
+    }
+
+    public int GetPlayerNumber(string playerName)
+    {
+        return CurrentPlayers.IndexOf(playerName) + 1;
+    }
+
+    public int GetPlayerNumber(PlayerMovement player)
+    {
+        return CurrentPlayers.IndexOf(player.playerName) + 1;
     }
 }

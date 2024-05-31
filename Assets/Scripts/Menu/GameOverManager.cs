@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject gameOverPanel; 
-    public TMP_Text gameOverText;
     public static GameOverManager instance;
 
     [SerializeField] int firstStageIndex = 1;
     [SerializeField] int lastStageIndex = 1;
 
+    bool roundOver = false;
     int[] allStageIndices = null;
     int currentStage = 0;
 
@@ -26,39 +23,39 @@ public class GameOverManager : MonoBehaviour
             return;
         }
         instance = this;
-        allStageIndices = Enumerable.Range(firstStageIndex, lastStageIndex - firstStageIndex + 1).ToArray();
-        ShuffleStageSelection();
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    private void Start()
     {
-        gameOverPanel.SetActive(false);
+        allStageIndices = Enumerable.Range(firstStageIndex, lastStageIndex - firstStageIndex + 1).ToArray();
+        ShuffleStageSelection();
     }
 
-    public void PlayerWins(string playerName)
-    {
-        gameOverText.text = "Game Over! \n" + playerName + " wins!";
-        gameOverPanel.SetActive(true);
-        Time.timeScale = 0;
-    }
+    [System.Obsolete("Depreciated. Use PlayerWins(PlayerMovement player) instead.")]
+    public void PlayerWins(string playerName) { }
 
     public void PlayerWins(PlayerMovement player)
     {
         SoundEffectManager.Instance.PlaySound("gameOver");
-        gameOverText.text = "Game Over! \n" + player.playerName + " wins!";
-        gameOverPanel.SetActive(true);
-        Time.timeScale = 0;
+        GameInfoCanvasBehavior.Instance.ShowGameOver(player);
+        TimeScaleManager.Instance.StopTime();
+        roundOver = true;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(allStageIndices[currentStage++]);
+        if (currentStage >= allStageIndices.Length)
+            ShuffleStageSelection();
     }
 
     public void ResetGame()
     {
-        if (!gameOverPanel.activeSelf)
-        {
-            return;
-        }
-        gameOverPanel.SetActive(false); // Hide the panel
-        Time.timeScale = 1;
+        if (!roundOver) return;
+
+        GameInfoCanvasBehavior.Instance.HideGameOver();
+        TimeScaleManager.Instance.ResumeTime();
         SceneManager.LoadScene(allStageIndices[currentStage++]); // Reset the scene
         if (currentStage >= allStageIndices.Length)
             ShuffleStageSelection();

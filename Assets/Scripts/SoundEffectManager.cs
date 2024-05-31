@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class SoundEffectManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public static SoundEffectManager Instance { get; private set; }
     private AudioSource audioSource;
 
-    public AudioClip fireSound;
-    public AudioClip dashSound;
-    public AudioClip powerUpCollectSound;
-    public AudioClip gameOverSound;
+    [SerializeField] AudioClip fireSound;
+    [SerializeField] AudioClip dashSound;
+    [SerializeField] AudioClip powerUpCollectSound;
+    [SerializeField] AudioClip gameOverSound;
 
     Dictionary<string, AudioClip> sounds = new Dictionary<string, AudioClip>();
 
@@ -28,7 +27,6 @@ public class SoundEffectManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     void Start()
@@ -42,11 +40,5 @@ public class SoundEffectManager : MonoBehaviour
     public void PlaySound(string soundName)
     {
         audioSource.PlayOneShot(sounds[soundName]);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
