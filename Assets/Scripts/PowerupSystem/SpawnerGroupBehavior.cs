@@ -12,7 +12,7 @@ namespace PowerupSystem
         public string name;
         public Sprite icon;
         public PowerupActivator activator;
-        public int spawnOdds;
+        public int spawnOdds = 1;
     }
 
     public class SpawnerGroupBehavior : MonoBehaviour
@@ -25,8 +25,7 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.increaseNumShots();
-                },
-                spawnOdds = 1
+                }
             },
             new PowerupInfo()
             {
@@ -34,8 +33,7 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.increaseBulletSpeed(5);
-                },
-                spawnOdds = 1
+                }
             },
             new PowerupInfo()
             {
@@ -43,13 +41,20 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     Debug.Log($"(Pretend that I gave {player.playerName} a shield)");
-                },
-                spawnOdds = 1
+                }
+            },
+            new PowerupInfo()
+            {
+                name = "Reduce Cooldown Time",
+                activator = delegate(PlayerMovement player)
+                {
+                    player.machineGun();
+                }
             }
         };
 
-        [SerializeField] float startDelaySeconds = 10f;
-        [SerializeField] float spawnMinIntervalSeconds = 8f;
+        [SerializeField] float startDelaySeconds = 5f;
+        [SerializeField] float spawnMinIntervalSeconds = 3f;
         [SerializeField] float spawnMaxIntervalSeconds = 10f;
 
         List<PowerupInfo> powerupPool;

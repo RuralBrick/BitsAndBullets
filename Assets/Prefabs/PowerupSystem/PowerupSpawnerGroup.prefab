@@ -56,6 +56,9 @@ MonoBehaviour:
   - name: Shield
     icon: {fileID: 21300000, guid: d6e0c61226318b64db8f2ca9069b2dae, type: 3}
     spawnOdds: 1
+  - name: Reduce Cooldown Time
+    icon: {fileID: 21300000, guid: 8c27f27f721c286448525b0b2549c3fd, type: 3}
+    spawnOdds: 2
   startDelaySeconds: 5
   spawnMinIntervalSeconds: 3
   spawnMaxIntervalSeconds: 10
