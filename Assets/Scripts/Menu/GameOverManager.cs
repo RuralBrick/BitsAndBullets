@@ -23,6 +23,7 @@ public class GameOverManager : MonoBehaviour
             return;
         }
         instance = this;
+        transform.SetParent(null, worldPositionStays: true);
         DontDestroyOnLoad(gameObject);
     }
 

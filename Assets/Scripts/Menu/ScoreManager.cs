@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         instance = this;
+        transform.SetParent(null, worldPositionStays: true);
         DontDestroyOnLoad(gameObject);
     }
 

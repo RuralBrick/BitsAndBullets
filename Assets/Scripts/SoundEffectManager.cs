@@ -21,6 +21,7 @@ public class SoundEffectManager : MonoBehaviour
         {
             Instance = this;
             audioSource = GetComponent<AudioSource>();
+            transform.SetParent(null, worldPositionStays: true);
             DontDestroyOnLoad(gameObject);
         }
         else

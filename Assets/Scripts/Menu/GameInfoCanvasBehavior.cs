@@ -46,6 +46,7 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            transform.SetParent(null, worldPositionStays: true);
             DontDestroyOnLoad(gameObject);
         }
         else
