@@ -53,12 +53,13 @@ public class GameOverManager : MonoBehaviour
     public void ResetGame()
     {
         if (!roundOver) return;
-
+        
         GameInfoCanvasBehavior.Instance.HideGameOver();
         TimeScaleManager.Instance.ResumeTime();
         SceneManager.LoadScene(allStageIndices[currentStage++]); // Reset the scene
         if (currentStage >= allStageIndices.Length)
             ShuffleStageSelection();
+        roundOver = false;
     }
 
     void ShuffleStageSelection()
