@@ -119,6 +119,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnPause()
+    {
+        PauseManager.Instance.pauseGame();
+    }
+
     void EndDash()
     {
         is_dashing = false;

@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "2d00cd42-1e81-4d9c-82cb-ff9139e23cb9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -227,6 +236,17 @@
                     "processors": "",
                     "groups": "KeyboardLeft;KeyboardRight",
                     "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eab158a6-d14b-4189-b274-b15d319f67d9",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardRight",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
