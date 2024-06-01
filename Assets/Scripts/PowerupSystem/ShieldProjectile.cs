@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Obsolete("Depreciated. Not necessary.")]
 public class ShieldProjectile : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D collision)

@@ -218,6 +218,7 @@ MonoBehaviour:
   playerName: 
   enemy: {fileID: 0}
   playerSpeed: 5
+  cooldownMutliplier: 1
 --- !u!1 &2229383220609362405
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +354,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   bulletPrefab: {fileID: 6851244308320667161, guid: 801597289d1f6c94eb14c2fd8d3d2908, type: 3}
+  shieldPrefab: {fileID: 3634442228047982461, guid: 85fd70c8198186d48866b523f15f9bb7, type: 3}
   readyColor: {r: 0, g: 1, b: 0, a: 1}
   coolDownColor: {r: 1, g: 0, b: 0, a: 1}
-  coolDownSeconds: 1

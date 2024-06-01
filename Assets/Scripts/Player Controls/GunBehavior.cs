@@ -7,17 +7,20 @@ public class GunBehavior : MonoBehaviour
     public PlayerMovement owner;
 
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject shieldPrefab;
     [SerializeField] Color readyColor = Color.green;
     [SerializeField] Color coolDownColor = Color.red;
-    private float coolDownSeconds = 3f;    // How long it takes to reload after you shoot - DEFAULT
-    private float numShots = 1;    // How many bullets we shoot per shot - DEFAULT
-    private float bulletSpeed = 10f;    // How fast does each bullet move - DEFAULT
+    [SerializeField] float coolDownSeconds = 3f;    // How long it takes to reload after you shoot - DEFAULT
+    [SerializeField] float numShots = 1;    // How many bullets we shoot per shot - DEFAULT
+    [SerializeField] float bulletSpeed = 10f;    // How fast does each bullet move - DEFAULT
+    [SerializeField] float shieldSpeed = 50f;
 
 
     SpriteRenderer spriteRenderer;
 
     uint numObstaclesInside = 0;
     bool coolingDown = false;
+    bool shieldActive = false;
 
     private void Start()
     {
@@ -30,6 +33,21 @@ public class GunBehavior : MonoBehaviour
         if (numObstaclesInside > 0 || coolingDown)
             return false;
 
+        if (shieldActive)
+        {
+            shieldActive = false;
+            FireShield(direction);
+        }
+        else
+        {
+            FireBullet(direction);
+        }
+
+        return true;
+    }
+
+    void FireBullet(Vector3 direction)
+    {
         coolingDown = true;
         spriteRenderer.color = coolDownColor;
         SoundEffectManager.Instance.PlaySound("fire");
@@ -90,9 +108,17 @@ public class GunBehavior : MonoBehaviour
         ScoreManager.instance.StartBulletTimer(owner);
         // Set the proper timer
         Invoke("FinishCooldown", coolDownSeconds);
-        return true;
     }
 
+    void FireShield(Vector3 direction)
+    {
+        GameObject newShield = Instantiate(
+            shieldPrefab,
+            transform.position + 0.5f * direction,
+            Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, direction))
+        );
+        newShield.GetComponent<Rigidbody2D>().velocity = direction * shieldSpeed;
+    }
 
     // Functions for Shotgun ---------------------------------------------
     // change the number of bullets that we shoot per shot
@@ -143,6 +169,11 @@ public class GunBehavior : MonoBehaviour
         {
             coolDownSeconds -= 1;
         }
+    }
+
+    public void DeployShield()
+    {
+        shieldActive = true;
     }
 
     // Set the bulletCooldown to 0.1 - Machine gun!
