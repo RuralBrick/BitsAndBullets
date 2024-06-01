@@ -8,6 +8,11 @@ public class PlayerMovement : MonoBehaviour
     public string playerName;
     public PlayerMovement enemy;
 
+    //Shield
+    public GameObject bulletPrefab;
+    public GameObject shieldPrefab;  
+    private bool isShieldActive = false;
+
     // Declare Variables and Constants
     [SerializeField] private float playerSpeed = 5; // Speed
 
@@ -202,6 +207,19 @@ public class PlayerMovement : MonoBehaviour
     public void decreaseBulletCoolDown()
     {
         gun.decreaseBulletCooldown();
+    }
+
+    //Shield
+    public void DeployShield()
+    {
+        isShieldActive = true;
+    }
+
+    void Fire()
+    {
+        GameObject projectile = isShieldActive ? shieldPrefab : bulletPrefab;
+        Instantiate(projectile, transform.position, Quaternion.identity);
+        isShieldActive = false;  // Optionally reset shield activation after firing
     }
 
     // Set teh bullet cooldown to 0.1
