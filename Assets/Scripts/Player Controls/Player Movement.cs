@@ -204,6 +204,12 @@ public class PlayerMovement : MonoBehaviour
         gun.decreaseBulletCooldown();
     }
 
+    //Shield
+    public void DeployShield()
+    {
+        gun.DeployShield();
+    }
+
     // Set teh bullet cooldown to 0.1
     public void machineGun()
     {

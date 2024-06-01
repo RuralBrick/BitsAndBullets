@@ -40,7 +40,7 @@ namespace PowerupSystem
                 name = "Shield",
                 activator = delegate(PlayerMovement player)
                 {
-                    Debug.Log($"(Pretend that I gave {player.playerName} a shield)");
+                    player.DeployShield();
                 }
             },
             new PowerupInfo()
