@@ -357,3 +357,7 @@ MonoBehaviour:
   shieldPrefab: {fileID: 3634442228047982461, guid: 85fd70c8198186d48866b523f15f9bb7, type: 3}
   readyColor: {r: 0, g: 1, b: 0, a: 1}
   coolDownColor: {r: 1, g: 0, b: 0, a: 1}
+  coolDownSeconds: 3.1
+  numShots: 1
+  bulletSpeed: 10
+  shieldSpeed: 50

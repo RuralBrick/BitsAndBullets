@@ -48,7 +48,7 @@ namespace PowerupSystem
                 name = "Reduce Cooldown Time",
                 activator = delegate(PlayerMovement player)
                 {
-                    player.machineGun();
+                    player.decreaseBulletCoolDown();
                 }
             }
         };

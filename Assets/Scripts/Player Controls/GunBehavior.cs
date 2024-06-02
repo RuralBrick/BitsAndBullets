@@ -10,7 +10,7 @@ public class GunBehavior : MonoBehaviour
     [SerializeField] GameObject shieldPrefab;
     [SerializeField] Color readyColor = Color.green;
     [SerializeField] Color coolDownColor = Color.red;
-    [SerializeField] float coolDownSeconds = 3f;    // How long it takes to reload after you shoot - DEFAULT
+    [SerializeField] float coolDownSeconds = 3.1f;    // How long it takes to reload after you shoot - DEFAULT
     [SerializeField] float numShots = 1;    // How many bullets we shoot per shot - DEFAULT
     [SerializeField] float bulletSpeed = 10f;    // How fast does each bullet move - DEFAULT
     [SerializeField] float shieldSpeed = 50f;
@@ -164,11 +164,13 @@ public class GunBehavior : MonoBehaviour
     // Decrease the bullet cooldown by 1
     public void decreaseBulletCooldown()
     {
+        Debug.Log("Previous Cooldown time: " + coolDownSeconds);
         // Only decrease the cooldown if we have the space to do so
-        if (coolDownSeconds > 0)
+        if (coolDownSeconds > 1.0f)
         {
-            coolDownSeconds -= 1;
+            coolDownSeconds -= 1.0f;
         }
+        Debug.Log("New Cooldown time: " + coolDownSeconds);
     }
 
     public void DeployShield()
