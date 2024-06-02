@@ -8,6 +8,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void StartGame()
+    {
+        GameOverManager.instance.StartGame();
+    }
+
     public void QuitApp()
     {
         Application.Quit();
