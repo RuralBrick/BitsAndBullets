@@ -70,4 +70,9 @@ public class ScoreManager : MonoBehaviour
         GameInfoCanvasBehavior.Instance.ResetIcons();
         Debug.Log("Icons Reset");
     }
+
+    public void ResetScores()
+    {
+        scores = new Dictionary<string, int>();
+    }
 }

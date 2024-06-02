@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -40,12 +40,24 @@ public class PauseManager : MonoBehaviour
         paused = false;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void activatePause()
     {
-        
+        Debug.Log("Pausing!");
+        // Pause the game
+        pauseScreen.SetActive(true);
+        TimeScaleManager.Instance.StopTime();
+        paused = true;
     }
 
+    void deactivatePause()
+    {
+        Debug.Log("Un-Pausing!");
+        // Otherwise, unpause the game
+        pauseScreen.SetActive(false);
+        TimeScaleManager.Instance.ResumeTime();
+        paused = false;
+    }
 
     // When we pause the game
     public void pauseGame()
@@ -53,21 +65,18 @@ public class PauseManager : MonoBehaviour
         // If we are not paused
         if (paused == false)
         {
-            Debug.Log("Pausing!");
-            // Pause the game
-            pauseScreen.SetActive(true);
-            TimeScaleManager.Instance.StopTime();
-            paused = true;
+            activatePause();
         }
         else
         {
-            Debug.Log("Un-Pausing!");
-            // Otherwise, unpause the game
-            pauseScreen.SetActive(false);
-            TimeScaleManager.Instance.ResumeTime();
-            paused = false;
+            deactivatePause();
         }
     }
 
-
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuFinal");
+        deactivatePause();
+        ScoreManager.instance.ResetScores();
+    }
 }
