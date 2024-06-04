@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,6 +64,14 @@ public class ScoreManager : MonoBehaviour
             currentPlayerManager.GetPlayerNumber(player),
             "dash"
         );
+    }
+
+    public void IncrementIcon(string icon, PlayerMovement player)
+    {
+        Debug.Log("Incrementing Icon");
+        GameInfoCanvasBehavior.Instance.IncrementIcon(
+            currentPlayerManager.GetPlayerNumber(player),
+            icon);
     }
 
     public void ResetIcons()

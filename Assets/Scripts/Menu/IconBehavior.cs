@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,10 @@ public class IconBehavior : MonoBehaviour
 
     Image image;
     float currentCooldown = 0;
+
+    public float offset = 20f;
+    public int iconCount = 0;
+    public TMP_Text countText;
 
     private void Awake()
     {
@@ -42,8 +47,17 @@ public class IconBehavior : MonoBehaviour
         currentCooldown = totalCooldown;
     }
 
+    public void addIcon()
+    {
+        iconCount++;
+        if (countText != null) {
+            countText.text = iconCount.ToString();
+        }
+    }
+
     public void Reset()
     {
         currentCooldown = 0f;
+        iconCount = 0;
     }
 }

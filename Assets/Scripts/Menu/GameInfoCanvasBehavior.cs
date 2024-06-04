@@ -10,6 +10,7 @@ public class IconGroup
     public string name;
     public float totalCooldown;
     public IconBehavior[] icons;
+    public bool isPowerUp;
 }
 
 public class GameInfoCanvasBehavior : MonoBehaviour
@@ -25,13 +26,22 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         {
             name = "bullet",
             totalCooldown = 3f,
-            icons = new IconBehavior[2]
+            icons = new IconBehavior[2],
+            isPowerUp = false,
         },
         new IconGroup
         {
             name = "dash",
             totalCooldown = 3f,
-            icons = new IconBehavior[2]
+            icons = new IconBehavior[2],
+            isPowerUp = false,
+        },
+        new IconGroup
+        {
+            name = "fast_reload",
+            totalCooldown = 3f,
+            icons = new IconBehavior[2],
+            isPowerUp = true
         }
     };
 
@@ -61,8 +71,10 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         gameOverPanel.SetActive(false);
         foreach (var group in IconInfo)
         {
+            Debug.Log(group.name);
             icons[group.name] = group.icons;
         }
+        Debug.Log(icons);
     }
 
     public void Initialize(PlayerMovement[] players)
@@ -92,6 +104,11 @@ public class GameInfoCanvasBehavior : MonoBehaviour
     public void StartTimer(int playerNumber, string iconName)
     {
         icons[iconName][playerNumber - 1].StartCooldown();
+    }
+
+    public void IncrementIcon(int playerNumber, string iconName) 
+    {
+        icons[iconName][playerNumber - 1].addIcon();
     }
 
     public void ResetIcons()
