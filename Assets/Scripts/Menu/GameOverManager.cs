@@ -11,6 +11,7 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] int firstStageIndex = 1;
     [SerializeField] int lastStageIndex = 1;
 
+    bool[] stageMask = null;
     bool roundOver = false;
     int[] allStageIndices = null;
     int currentStage = 0;
@@ -29,7 +30,14 @@ public class GameOverManager : MonoBehaviour
 
     private void Start()
     {
-        allStageIndices = Enumerable.Range(firstStageIndex, lastStageIndex - firstStageIndex + 1).ToArray();
+        stageMask = new bool[lastStageIndex - firstStageIndex + 1];
+        for (int i = 0; i < stageMask.Length; i++)
+        {
+            stageMask[i] = true;
+        }
+        allStageIndices = Enumerable.Range(firstStageIndex, lastStageIndex - firstStageIndex + 1)
+                                    .Where(index => stageMask[index - firstStageIndex])
+                                    .ToArray();
         ShuffleStageSelection();
     }
 
@@ -42,6 +50,15 @@ public class GameOverManager : MonoBehaviour
         GameInfoCanvasBehavior.Instance.ShowGameOver(player);
         TimeScaleManager.Instance.StopTime();
         roundOver = true;
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuFinal");
+        allStageIndices = Enumerable.Range(firstStageIndex, lastStageIndex - firstStageIndex + 1)
+                                    .Where(index => stageMask[index - firstStageIndex])
+                                    .ToArray();
+        ShuffleStageSelection();
     }
 
     public void StartGame()
@@ -61,6 +78,11 @@ public class GameOverManager : MonoBehaviour
         if (currentStage >= allStageIndices.Length)
             ShuffleStageSelection();
         roundOver = false;
+    }
+
+    public void SetLevel(int index, bool selection)
+    {
+        stageMask[index] = selection;
     }
 
     void ShuffleStageSelection()
