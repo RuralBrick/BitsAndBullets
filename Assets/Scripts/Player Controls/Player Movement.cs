@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+enum FacingDirection
+{
+    Side,
+    Front,
+    Back
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     public string playerName;
@@ -21,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Assign value to move vector - 0 for now
     Vector2 move = new Vector2(0, 0);
     Vector2 orientation = new Vector2(1, 0);
+    FacingDirection currentDirection = FacingDirection.Side;
 
     float dash_cooldown = 3f;
     float dash_duration = 0.1f;
@@ -84,6 +92,40 @@ public class PlayerMovement : MonoBehaviour
 
         // Also store this orientation for firing purposes
         orientation = direction.normalized;
+
+        FacingDirection newDirection;
+        if (Mathf.Abs(orientation.x) >= Mathf.Abs(orientation.y))
+        {
+            newDirection = FacingDirection.Side;
+        }
+        else if (orientation.y < 0)
+        {
+            newDirection = FacingDirection.Front;
+        }
+        else
+        {
+            newDirection = FacingDirection.Back;
+        }
+
+        if (newDirection != currentDirection)
+        {
+            currentDirection = newDirection;
+            switch (currentDirection)
+            {
+                case FacingDirection.Side:
+                    animator.SetTrigger("TurnSide");
+                    gun.PointSide();
+                    break;
+                case FacingDirection.Front:
+                    animator.SetTrigger("TurnFront");
+                    gun.PointFront();
+                    break;
+                case FacingDirection.Back:
+                    animator.SetTrigger("TurnBack");
+                    gun.PointBack();
+                    break;
+            }
+        }
     }
 
     // Get the move input
@@ -106,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDash()
     {
-        if (dash_available)
+        if (dash_available && move != Vector2.zero)
         {
             SoundEffectManager.Instance.PlaySound("dash");
             is_dashing = true;

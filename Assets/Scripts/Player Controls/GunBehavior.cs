@@ -8,6 +8,9 @@ public class GunBehavior : MonoBehaviour
 
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject shieldPrefab;
+    [SerializeField] Transform sidePoint;
+    [SerializeField] Transform frontPoint;
+    [SerializeField] Transform backPoint;
     [SerializeField] Color readyColor = Color.green;
     [SerializeField] Color coolDownColor = Color.red;
     [SerializeField] float coolDownSeconds = 3.1f;    // How long it takes to reload after you shoot - DEFAULT
@@ -66,10 +69,10 @@ public class GunBehavior : MonoBehaviour
             Vector3 bulletOrientation = Vector3.zero;
 
             // Add appropiate spacing if we are shooting up
-            if (direction != xDir && direction != (-1f * xDir))
-            {
-                bulletSpacing += 0.6f * direction;
-            }
+            //if (direction != xDir && direction != (-1f * xDir))
+            //{
+            //    bulletSpacing += 0.6f * direction;
+            //}
 
             // Add appropiate bullet spread
             if (direction.x >= 0 && direction.y == 0)
@@ -118,6 +121,21 @@ public class GunBehavior : MonoBehaviour
             Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.right, direction))
         );
         newShield.GetComponent<Rigidbody2D>().velocity = direction * shieldSpeed;
+    }
+
+    public void PointSide()
+    {
+        transform.position = sidePoint.position;
+    }
+
+    public void PointFront()
+    {
+        transform.position = frontPoint.position;
+    }
+
+    public void PointBack()
+    {
+        transform.position = backPoint.position;
     }
 
     // Functions for Shotgun ---------------------------------------------
