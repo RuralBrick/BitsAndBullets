@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenuFinal.unity
     guid: df2b369386071614a8bc59f30ef1e003
   - enabled: 1
+    path: Assets/Scenes/Menus/LevelSelection.unity
+    guid: 72b8f5119c109164aa283129642e8a02
+  - enabled: 1
     path: Assets/Scenes/FinalStages/FantasyCourtyard.unity
     guid: 59b470c0fa015554b86081bd9dc6992e
   - enabled: 1
@@ -28,7 +31,7 @@ EditorBuildSettings:
     guid: 1c4c78690d8d945488e9179928a79845
   - enabled: 1
     path: Assets/Scenes/FinalStages/Dungeon.unity
-    guid: cb4be57ffb83ce944855009cdcde5447
+    guid: 11475dfde2e84c64d84ef548ba5755d5
   - enabled: 1
     path: Assets/Scenes/FinalStages/Cells.unity
     guid: adcc8dd722176bb4fb6c687ca6e329d6
