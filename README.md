@@ -2,10 +2,10 @@ Local Co-Op Shooter Game made for UCLA E96 in 6 weeks
 
 Credits: 
 
-Alex Henderson: Programming, UI/UX Developer
-Nyla Jafri: Art, UI/UX Developer, Programming
-Theodore Lau: Programming, Level Design, Sound
-Jacob Sandler: Programming, UI/UX Developer
+Alex Henderson: Programming, UI/UX Developer;
+Nyla Jafri: Art, UI/UX Developer, Programming;
+Theodore Lau: Programming, Level Design, Sound; 
+Jacob Sandler: Programming, UI/UX Developer;
 
 
 Art Assets Credits: 
