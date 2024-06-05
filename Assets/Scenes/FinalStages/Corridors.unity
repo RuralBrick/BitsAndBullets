@@ -1179,11 +1179,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 54465389661770216, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 551.92
+      value: -0.9608154
       objectReference: {fileID: 0}
     - target: {fileID: 54465389661770216, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -134.57
+      value: 0.49499512
       objectReference: {fileID: 0}
     - target: {fileID: 882117827553613453, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: IconInfo.Array.size
@@ -1219,7 +1219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4097866340825877594, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 596.53
+      value: 230.38
       objectReference: {fileID: 0}
     - target: {fileID: 4097866340825877594, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1283,27 +1283,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -0.7800293
+      value: 28.017
       objectReference: {fileID: 0}
     - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1.1524048
+      value: 0.5762
       objectReference: {fileID: 0}
     - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.39003
+      value: 14.007996
       objectReference: {fileID: 0}
     - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00000023842
+      value: -0.2881012
       objectReference: {fileID: 0}
     - target: {fileID: 9073122460450706496, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -556.5
+      value: -1.3393
       objectReference: {fileID: 0}
     - target: {fileID: 9073122460450706496, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -137.5
+      value: 1.0755
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4314,9 +4314,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.15377696
-    y: -0.33566433
-    width: 0.6906474
+    x: 1.5704918
+    y: 0.5244755
+    width: 1.6786885
     height: 1.6783216
   near clip plane: 0.3
   far clip plane: 1000

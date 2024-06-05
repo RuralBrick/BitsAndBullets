@@ -12,7 +12,6 @@ public class IconBehavior : MonoBehaviour
     Image image;
     float currentCooldown = 0;
 
-    public float offset = 20f;
     public int iconCount = 0;
     public TMP_Text countText;
 
@@ -40,6 +39,16 @@ public class IconBehavior : MonoBehaviour
         myPlayer = player;
         image.color = player.GetComponent<SpriteRenderer>().color;
         this.totalCooldown = totalCooldown;
+        
+        if (iconCount == 0)
+        {
+            image.enabled = false;
+        }
+
+        if (countText != null)
+        {
+            countText.enabled = false;
+        }
     }
 
     public void StartCooldown()
@@ -49,9 +58,31 @@ public class IconBehavior : MonoBehaviour
 
     public void addIcon()
     {
+        Debug.Log("ADDING ICON");
         iconCount++;
-        if (countText != null) {
+        if (countText != null && iconCount > 1) {
+            countText.enabled = true;
             countText.text = iconCount.ToString();
+        }
+        image.enabled = true;
+    }
+
+    public void removeIcon() {
+        iconCount = 0;
+        // This is how it should work in general but made the change for shield icon
+        // If we let them have muliple shield icons we'll set iconCount to -=1;
+        if (countText != null && iconCount < 1)
+        {
+            countText.enabled = false;
+        }
+        else
+        {
+            countText.text = iconCount.ToString();
+        }
+
+        if (iconCount == 0)
+        {
+            image.enabled = false;
         }
     }
 

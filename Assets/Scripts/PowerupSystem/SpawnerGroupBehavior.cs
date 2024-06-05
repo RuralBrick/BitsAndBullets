@@ -25,7 +25,7 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.increaseNumShots();
-                    ScoreManager.instance.IncrementIcon("fast_reload", player);
+                    ScoreManager.instance.IncrementIcon("shotgun", player);
                 }
             },
             new PowerupInfo()
@@ -34,7 +34,7 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.increaseBulletSpeed(5);
-                    ScoreManager.instance.IncrementIcon("fast_reload", player);
+                    ScoreManager.instance.IncrementIcon("faster_bullets", player);
                 }
             },
             new PowerupInfo()
@@ -43,7 +43,7 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.DeployShield();
-                    ScoreManager.instance.IncrementIcon("fast_reload", player);
+                    ScoreManager.instance.IncrementIcon("barrier", player);
                 }
             },
             new PowerupInfo()

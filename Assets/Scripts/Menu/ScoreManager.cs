@@ -74,6 +74,14 @@ public class ScoreManager : MonoBehaviour
             icon);
     }
 
+    public void RemoveIcon(string icon, PlayerMovement player)
+    {
+        Debug.Log("Decrementing Icon");
+        GameInfoCanvasBehavior.Instance.RemoveIcon(
+            currentPlayerManager.GetPlayerNumber(player),
+            icon);
+    }
+
     public void ResetIcons()
     {
         GameInfoCanvasBehavior.Instance.ResetIcons();

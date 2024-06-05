@@ -41,7 +41,28 @@ public class GameInfoCanvasBehavior : MonoBehaviour
             name = "fast_reload",
             totalCooldown = 3f,
             icons = new IconBehavior[2],
-            isPowerUp = true
+            isPowerUp = true,
+        },
+        new IconGroup
+        {
+            name = "shotgun",
+            totalCooldown = 3f,
+            icons = new IconBehavior[2],
+            isPowerUp = true,
+        },
+        new IconGroup
+        {
+            name = "faster_bullets",
+            totalCooldown = 3f,
+            icons = new IconBehavior[2],
+            isPowerUp = true,
+        },
+        new IconGroup
+        {
+            name = "barrier",
+            totalCooldown = 3f,
+            icons = new IconBehavior[2],
+            isPowerUp = true,
         }
     };
 
@@ -84,6 +105,11 @@ public class GameInfoCanvasBehavior : MonoBehaviour
             for (int i = 0; i < players.Length; i++)
             {
                 group.icons[i].Initialize(players[i], group.totalCooldown);
+                // Add in a permenent icon if not a power up
+                if(!group.isPowerUp)
+                {
+                    group.icons[i].addIcon();
+                }
             }
         }
 
@@ -106,7 +132,12 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         icons[iconName][playerNumber - 1].StartCooldown();
     }
 
-    public void IncrementIcon(int playerNumber, string iconName) 
+    public void RemoveIcon(int playerNumber, string iconName)
+    {
+        icons[iconName][playerNumber - 1].removeIcon();
+    }
+
+    public void IncrementIcon(int playerNumber, string iconName)
     {
         icons[iconName][playerNumber - 1].addIcon();
     }

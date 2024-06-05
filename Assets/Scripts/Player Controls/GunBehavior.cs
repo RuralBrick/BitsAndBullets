@@ -37,6 +37,7 @@ public class GunBehavior : MonoBehaviour
         {
             shieldActive = false;
             FireShield(direction);
+            ScoreManager.instance.RemoveIcon("barrier", owner);
         }
         else
         {
