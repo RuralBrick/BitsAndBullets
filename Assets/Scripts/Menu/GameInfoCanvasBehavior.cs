@@ -8,8 +8,8 @@ using TMPro;
 public class IconGroup
 {
     public string name;
-    public float totalCooldown;
     public IconBehavior[] icons;
+    public bool isPowerUp;
 }
 
 public class GameInfoCanvasBehavior : MonoBehaviour
@@ -24,14 +24,38 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         new IconGroup
         {
             name = "bullet",
-            totalCooldown = 3f,
-            icons = new IconBehavior[2]
+            icons = new IconBehavior[2],
+            isPowerUp = false,
         },
         new IconGroup
         {
             name = "dash",
-            totalCooldown = 3f,
-            icons = new IconBehavior[2]
+            icons = new IconBehavior[2],
+            isPowerUp = false,
+        },
+        new IconGroup
+        {
+            name = "fast_reload",
+            icons = new IconBehavior[2],
+            isPowerUp = true,
+        },
+        new IconGroup
+        {
+            name = "shotgun",
+            icons = new IconBehavior[2],
+            isPowerUp = true,
+        },
+        new IconGroup
+        {
+            name = "faster_bullets",
+            icons = new IconBehavior[2],
+            isPowerUp = true,
+        },
+        new IconGroup
+        {
+            name = "barrier",
+            icons = new IconBehavior[2],
+            isPowerUp = true,
         }
     };
 
@@ -61,8 +85,10 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         gameOverPanel.SetActive(false);
         foreach (var group in IconInfo)
         {
+            Debug.Log(group.name);
             icons[group.name] = group.icons;
         }
+        Debug.Log(icons);
     }
 
     public void Initialize(PlayerMovement[] players)
@@ -71,7 +97,12 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         {
             for (int i = 0; i < players.Length; i++)
             {
-                group.icons[i].Initialize(players[i], group.totalCooldown);
+                group.icons[i].Initialize(players[i]);
+                // Add in a permenent icon if not a power up
+                if(!group.isPowerUp)
+                {
+                    group.icons[i].addIcon();
+                }
             }
         }
 
@@ -89,9 +120,24 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         PlayerText[playerNumber - 1].text = playerNames[playerNumber - 1] + ": " + score;
     }
 
+    public void SetTotalCooldown(int playerNumber, string iconName, float totalCooldown)
+    {
+        icons[iconName][playerNumber - 1].SetTotalCooldown(totalCooldown);
+    }
+
     public void StartTimer(int playerNumber, string iconName)
     {
         icons[iconName][playerNumber - 1].StartCooldown();
+    }
+
+    public void RemoveIcon(int playerNumber, string iconName)
+    {
+        icons[iconName][playerNumber - 1].removeIcon();
+    }
+
+    public void IncrementIcon(int playerNumber, string iconName)
+    {
+        icons[iconName][playerNumber - 1].addIcon();
     }
 
     public void ResetIcons()

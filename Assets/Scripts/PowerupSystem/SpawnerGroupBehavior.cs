@@ -25,6 +25,7 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.increaseNumShots();
+                    ScoreManager.instance.IncrementIcon("shotgun", player);
                 }
             },
             new PowerupInfo()
@@ -33,6 +34,7 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.increaseBulletSpeed(5);
+                    ScoreManager.instance.IncrementIcon("faster_bullets", player);
                 }
             },
             new PowerupInfo()
@@ -49,6 +51,7 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.decreaseBulletCoolDown();
+                    ScoreManager.instance.IncrementIcon("fast_reload", player);
                 }
             }
         };

@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private GunBehavior gun;
     private Collider2D player_collider;
+    private PlayerManagerBehavior playerManager;
 
     // Decalre the Vector 2
     // Assign value to move vector - 0 for now
@@ -40,10 +41,6 @@ public class PlayerMovement : MonoBehaviour
     int bullet_layer;
 
 
-    // multiplier for reducing cooldown times
-    public float cooldownMutliplier = 1f;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -56,15 +53,18 @@ public class PlayerMovement : MonoBehaviour
         gun.owner = this;
 
         bullet_layer = LayerMask.NameToLayer("Bullet");
+
+        playerManager = FindObjectOfType<PlayerManagerBehavior>();
+        GameInfoCanvasBehavior.Instance.SetTotalCooldown(
+            playerManager.GetPlayerNumber(this),
+            "dash",
+            dash_cooldown
+        );
     }
 
     // Update is called once per frame
     void Update()
     {
-        // update the cooldownMultiplier - used for updating cooldown sprites
-        cooldownMutliplier = 3 / gun.returnBulletCooldown();
-
-
         // Moving Code -------------------------------------------------------------------------------------------
         if (is_dashing)
         {
