@@ -73,14 +73,8 @@ public class GunBehavior : MonoBehaviour
         for (int i = 0; i < numShots; i++)
         {
             // Where do we put mutliple shots - position and orientation
-            Vector3 bulletSpacing = (bulletSpawn * (0.25f * i - 0.125f * (numShots - 1)));
+            Vector3 bulletSpacing = 0.2f * direction + bulletSpawn * (0.25f * i - 0.125f * (numShots - 1));
             Vector3 bulletOrientation = Vector3.zero;
-
-            // Add appropiate spacing if we are shooting up
-            //if (direction != xDir && direction != (-1f * xDir))
-            //{
-            //    bulletSpacing += 0.6f * direction;
-            //}
 
             // Add appropiate bullet spread
             if (direction.x >= 0 && direction.y == 0)
