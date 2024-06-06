@@ -1074,10 +1074,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mission: Defeat the person by your side. \n\nPlayer Left: \nMove using
-    [W] -> Up, [A] -> Right, [S] -> Down, [D] -> Right\nFire using [F] \n\nPlayer
-    Right: \nMove using arrow keys (i.e. up arrow indicates moving up) \nFire using
-    [.] \n\nPress SPACE to proceed matches. \n\nWatch out for stray bullets and in
+  m_text: "Mission: Defeat the person by your side. \n\nPlayer Left: \nMOVE using
+    [W] -> Up, [A] -> Right, [S] -> Down, [D] -> Right\nFIRE using [F] and DASH using
+    [G]\n\nPlayer Right: \nMOVE using arrow keys (i.e. up arrow indicates moving
+    up) \nFIRE using [.] and DASH using [,] \n\nPress SPACE to proceed matches. First
+    to 10 (default unless changed), wins. \n\nWatch out for stray bullets and in
     real life sabotages. \nAnything goes in Bits and Bullets\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
