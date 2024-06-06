@@ -1158,17 +1158,6 @@ Transform:
   - {fileID: 247198784}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &715857346 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2496819620414896026, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-  m_PrefabInstance: {fileID: 872105365}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c876befa506e749863ee4ceed012e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &872105365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1177,53 +1166,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 54465389661770216, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.9608154
-      objectReference: {fileID: 0}
-    - target: {fileID: 54465389661770216, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.49499512
-      objectReference: {fileID: 0}
-    - target: {fileID: 882117827553613453, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: IconInfo.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 882117827553613453, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: IconInfo.Array.data[2].name
-      value: fast_reload
-      objectReference: {fileID: 0}
-    - target: {fileID: 882117827553613453, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: IconInfo.Array.data[2].isPowerUp
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 882117827553613453, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: IconInfo.Array.data[2].totalCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 882117827553613453, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: IconInfo.Array.data[2].icons.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 882117827553613453, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: IconInfo.Array.data[2].icons.Array.data[0]
-      value: 
-      objectReference: {fileID: 715857346}
-    - target: {fileID: 882117827553613453, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: IconInfo.Array.data[2].icons.Array.data[1]
-      value: 
-      objectReference: {fileID: 1404983717}
     - target: {fileID: 3935495034441361580, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_Name
       value: CoreBattleLogic
-      objectReference: {fileID: 0}
-    - target: {fileID: 4097866340825877594, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 230.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 4097866340825877594, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -133.99
       objectReference: {fileID: 0}
     - target: {fileID: 7707584829562416358, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1264,46 +1209,6 @@ PrefabInstance:
     - target: {fileID: 7707584829562416358, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.03780373
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.14062501
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 28.017
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.5762
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 14.007996
-      objectReference: {fileID: 0}
-    - target: {fileID: 8747755387154485292, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.2881012
-      objectReference: {fileID: 0}
-    - target: {fileID: 9073122460450706496, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.3393
-      objectReference: {fileID: 0}
-    - target: {fileID: 9073122460450706496, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.0755
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3766,17 +3671,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1404983717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2192781414961693983, guid: 64cfc5f75ba766748af1d204d4aa0ba7, type: 3}
-  m_PrefabInstance: {fileID: 872105365}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c876befa506e749863ee4ceed012e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1447479186
 GameObject:
   m_ObjectHideFlags: 0
@@ -4314,10 +4208,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 1.5704918
-    y: 0.5244755
-    width: 1.6786885
-    height: 1.6783216
+    x: 1.2617188
+    y: 0.1671875
+    width: 0.5
+    height: 0.5
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
