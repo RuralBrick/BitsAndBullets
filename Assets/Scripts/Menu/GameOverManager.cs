@@ -55,7 +55,7 @@ public class GameOverManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        SoundEffectManager.Instance.Mute();
+        SoundEffectManager.Instance?.Mute();
         SceneManager.LoadScene("MainMenuFinal");
         allStageIndices = Enumerable.Range(firstStageIndex, lastStageIndex - firstStageIndex + 1)
                                     .Where(index => stageMask[index - firstStageIndex])
@@ -68,7 +68,7 @@ public class GameOverManager : MonoBehaviour
         if (currentStage >= allStageIndices.Length)
             ShuffleStageSelection();
         SceneManager.LoadScene(allStageIndices[currentStage++]);
-        SoundEffectManager.Instance.Unmute();
+        SoundEffectManager.Instance?.Unmute();
     }
 
     public void ResetGame()
@@ -89,6 +89,11 @@ public class GameOverManager : MonoBehaviour
                 ShuffleStageSelection();
             SceneManager.LoadScene(allStageIndices[currentStage++]); // Reset the scene
         }
+    }
+
+    public bool GetLevelSelection(int index)
+    {
+        return stageMask[index];
     }
 
     public void SetLevel(int index, bool selection)

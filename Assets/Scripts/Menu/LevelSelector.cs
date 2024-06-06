@@ -1,7 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSelector : MonoBehaviour
 {
+    [SerializeField] Toggle[] toggles = new Toggle[9];
+
+    private void Start()
+    {
+        for (int i = 0; i < toggles.Length; i++)
+        {
+            toggles[i].isOn = GameOverManager.instance.GetLevelSelection(i);
+        }
+    }
+
     public void SetLevel0(bool selection)
     {
         GameOverManager.instance.SetLevel(0, selection);
