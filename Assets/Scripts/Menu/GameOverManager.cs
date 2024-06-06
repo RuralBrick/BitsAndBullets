@@ -8,7 +8,7 @@ public class GameOverManager : MonoBehaviour
 {
     public static GameOverManager instance;
 
-    [SerializeField] int maxScore = 10;
+    public int maxScore = 10;
     [SerializeField] int firstStageIndex = 1;
     [SerializeField] int lastStageIndex = 1;
 
