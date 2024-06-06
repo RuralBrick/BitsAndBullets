@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class IconBehavior : MonoBehaviour
 {
-    PlayerMovement myPlayer;
-    float totalCooldown;
+    float totalCooldown = 1f;
 
     Image image;
     float currentCooldown = 0;
@@ -26,7 +25,7 @@ public class IconBehavior : MonoBehaviour
         if (currentCooldown > 0)
         {
             image.fillAmount = 1f - (currentCooldown / totalCooldown);
-            currentCooldown -= myPlayer.cooldownMutliplier * Time.deltaTime;
+            currentCooldown -= Time.deltaTime;
         }
         else
         {
@@ -34,11 +33,9 @@ public class IconBehavior : MonoBehaviour
         }
     }
 
-    public void Initialize(PlayerMovement player, float totalCooldown)
+    public void Initialize(PlayerMovement player)
     {
-        myPlayer = player;
         image.color = player.GetComponent<SpriteRenderer>().color;
-        this.totalCooldown = totalCooldown;
         
         if (iconCount == 0)
         {
@@ -49,6 +46,11 @@ public class IconBehavior : MonoBehaviour
         {
             countText.enabled = false;
         }
+    }
+
+    public void SetTotalCooldown(float totalCooldown)
+    {
+        this.totalCooldown = totalCooldown;
     }
 
     public void StartCooldown()

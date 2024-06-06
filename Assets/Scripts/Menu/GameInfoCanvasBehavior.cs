@@ -8,7 +8,6 @@ using TMPro;
 public class IconGroup
 {
     public string name;
-    public float totalCooldown;
     public IconBehavior[] icons;
     public bool isPowerUp;
 }
@@ -25,42 +24,36 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         new IconGroup
         {
             name = "bullet",
-            totalCooldown = 3f,
             icons = new IconBehavior[2],
             isPowerUp = false,
         },
         new IconGroup
         {
             name = "dash",
-            totalCooldown = 3f,
             icons = new IconBehavior[2],
             isPowerUp = false,
         },
         new IconGroup
         {
             name = "fast_reload",
-            totalCooldown = 3f,
             icons = new IconBehavior[2],
             isPowerUp = true,
         },
         new IconGroup
         {
             name = "shotgun",
-            totalCooldown = 3f,
             icons = new IconBehavior[2],
             isPowerUp = true,
         },
         new IconGroup
         {
             name = "faster_bullets",
-            totalCooldown = 3f,
             icons = new IconBehavior[2],
             isPowerUp = true,
         },
         new IconGroup
         {
             name = "barrier",
-            totalCooldown = 3f,
             icons = new IconBehavior[2],
             isPowerUp = true,
         }
@@ -104,7 +97,7 @@ public class GameInfoCanvasBehavior : MonoBehaviour
         {
             for (int i = 0; i < players.Length; i++)
             {
-                group.icons[i].Initialize(players[i], group.totalCooldown);
+                group.icons[i].Initialize(players[i]);
                 // Add in a permenent icon if not a power up
                 if(!group.isPowerUp)
                 {
@@ -125,6 +118,11 @@ public class GameInfoCanvasBehavior : MonoBehaviour
     public void UpdateScoreboard(int playerNumber, int score)
     {
         PlayerText[playerNumber - 1].text = playerNames[playerNumber - 1] + ": " + score;
+    }
+
+    public void SetTotalCooldown(int playerNumber, string iconName, float totalCooldown)
+    {
+        icons[iconName][playerNumber - 1].SetTotalCooldown(totalCooldown);
     }
 
     public void StartTimer(int playerNumber, string iconName)

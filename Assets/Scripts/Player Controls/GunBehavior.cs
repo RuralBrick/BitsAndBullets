@@ -19,6 +19,7 @@ public class GunBehavior : MonoBehaviour
     [SerializeField] float shieldSpeed = 50f;
 
 
+    PlayerManagerBehavior playerManager;
     SpriteRenderer spriteRenderer;
 
     uint numObstaclesInside = 0;
@@ -29,6 +30,12 @@ public class GunBehavior : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = readyColor;
+        playerManager = FindObjectOfType<PlayerManagerBehavior>();
+        GameInfoCanvasBehavior.Instance.SetTotalCooldown(
+            playerManager.GetPlayerNumber(owner),
+            "bullet",
+            coolDownSeconds
+        );
     }
 
     public bool Fire(Vector3 direction)
@@ -189,6 +196,11 @@ public class GunBehavior : MonoBehaviour
         {
             coolDownSeconds -= 1.0f;
         }
+        GameInfoCanvasBehavior.Instance.SetTotalCooldown(
+            playerManager.GetPlayerNumber(owner),
+            "bullet",
+            coolDownSeconds
+        );
         Debug.Log("New Cooldown time: " + coolDownSeconds);
     }
 
@@ -205,12 +217,22 @@ public class GunBehavior : MonoBehaviour
     public void machineGun()
     {
         coolDownSeconds = 0.1f;
+        GameInfoCanvasBehavior.Instance.SetTotalCooldown(
+            playerManager.GetPlayerNumber(owner),
+            "bullet",
+            coolDownSeconds
+        );
     }
 
     // Set the bulletCooldown to the specified value
     public void setBulletCoolDown(float n)
     {
         coolDownSeconds = n;
+        GameInfoCanvasBehavior.Instance.SetTotalCooldown(
+            playerManager.GetPlayerNumber(owner),
+            "bullet",
+            coolDownSeconds
+        );
     }
 
     // return the current bullet cool down
