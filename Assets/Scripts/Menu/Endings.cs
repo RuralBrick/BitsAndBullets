@@ -23,6 +23,7 @@ public class Endings : MonoBehaviour
     public void MainMenuButton()
     {
         ResetEverything();
+        SoundEffectManager.Instance.Mute();
         SceneManager.LoadScene("MainMenuFinal");
     }
 

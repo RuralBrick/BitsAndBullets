@@ -75,6 +75,7 @@ public class PauseManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        SoundEffectManager.Instance.Mute();
         SceneManager.LoadScene("MainMenuFinal");
         deactivatePause();
         ScoreManager.instance.ResetScores();

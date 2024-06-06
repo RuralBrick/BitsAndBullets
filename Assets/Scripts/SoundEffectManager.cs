@@ -42,4 +42,14 @@ public class SoundEffectManager : MonoBehaviour
     {
         audioSource.PlayOneShot(sounds[soundName]);
     }
+
+    public void Mute()
+    {
+        audioSource.enabled = false;
+    }
+
+    public void Unmute()
+    {
+        audioSource.enabled = true;
+    }
 }
