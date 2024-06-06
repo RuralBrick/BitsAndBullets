@@ -194,6 +194,10 @@ public class GunBehavior : MonoBehaviour
 
     public void DeployShield()
     {
+        if (!shieldActive)
+        {
+            ScoreManager.instance.IncrementIcon("barrier", owner);
+        }
         shieldActive = true;
     }
 

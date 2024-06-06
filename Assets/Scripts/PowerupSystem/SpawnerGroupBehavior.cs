@@ -43,7 +43,6 @@ namespace PowerupSystem
                 activator = delegate(PlayerMovement player)
                 {
                     player.DeployShield();
-                    ScoreManager.instance.IncrementIcon("barrier", player);
                 }
             },
             new PowerupInfo()
