@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -46,6 +46,31 @@ public class ScoreManager : MonoBehaviour
             currentPlayerManager.GetPlayerNumber(player),
             scores[player.playerName]
         );
+    }
+
+    public int GetMaxScore()
+    {
+        return scores.Values.Max();
+    }
+
+    public string GetCurrentWinner()
+    {
+        int maxScore = -1;
+        string maxPlayer = "";
+        foreach (var score in scores)
+        {
+            if (score.Value > maxScore)
+            {
+                maxPlayer = score.Key;
+            }
+        }
+        return maxPlayer;
+    }
+
+    public int GetNonMaxScore()
+    {
+        int max = GetMaxScore();
+        return scores.Values.First(score => score != max);
     }
 
     public void StartBulletTimer(PlayerMovement player)

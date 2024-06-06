@@ -8,6 +8,7 @@ public class GameOverManager : MonoBehaviour
 {
     public static GameOverManager instance;
 
+    public int maxScore = 10;
     [SerializeField] int firstStageIndex = 1;
     [SerializeField] int lastStageIndex = 1;
 
@@ -63,9 +64,9 @@ public class GameOverManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(allStageIndices[currentStage++]);
         if (currentStage >= allStageIndices.Length)
             ShuffleStageSelection();
+        SceneManager.LoadScene(allStageIndices[currentStage++]);
     }
 
     public void ResetGame()
@@ -74,10 +75,18 @@ public class GameOverManager : MonoBehaviour
         
         GameInfoCanvasBehavior.Instance.HideGameOver();
         TimeScaleManager.Instance.ResumeTime();
-        SceneManager.LoadScene(allStageIndices[currentStage++]); // Reset the scene
-        if (currentStage >= allStageIndices.Length)
-            ShuffleStageSelection();
         roundOver = false;
+
+        if (ScoreManager.instance.GetMaxScore() >= maxScore)
+        {
+            SceneManager.LoadScene("Ending");
+        }
+        else
+        {
+            if (currentStage >= allStageIndices.Length)
+                ShuffleStageSelection();
+            SceneManager.LoadScene(allStageIndices[currentStage++]); // Reset the scene
+        }
     }
 
     public void SetLevel(int index, bool selection)
